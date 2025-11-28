@@ -121,6 +121,9 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: var(--shadow-soft);
   padding: 1.1rem 1.3rem 1.4rem;
+        display: flex;
+  flex-direction: column;
+  max-height: 320px; 
 }
 
 .tools-top {
@@ -129,11 +132,47 @@
   gap: 0.75rem;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.6rem;
 }
 
 .tools-search {
   flex: 1 1 220px;
+}
+
+    .tool-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+
+  max-height: 220px;   
+  overflow-y: auto;
+  padding-right: 0.3rem;   
+       scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+
+    .tool-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tool-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tool-grid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+}
+
+    @media (max-width: 700px) {
+  .tools-panel {
+    max-height: 260px;
+  }
+  .tool-grid {
+    max-height: 180px;
+  }
 }
 
 .tools-search input {
