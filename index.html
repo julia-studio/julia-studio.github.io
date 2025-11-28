@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Julia Steidle - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050812;
+      --bg-elevated: #0c1020;
+      --accent-1: #00f7ff;
+      --accent-2: #ff3af2;
+      --accent-soft: #8f9bff;
+      --text-main: #fdfdfd;
+      --text-muted: #b3b7d9;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --radius-lg: 18px;
+      --radius-xl: 22px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #141b35, #050812 55%, #02030a);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 0 1.5rem 3rem;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* --- Neon Header --- */
+
+    .neon-header {
+      text-align: center;
+      margin: 2.8rem auto 1.8rem;
+    }
+
+    .neon-sign {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 0 18px rgba(0, 247, 255, 0.25),
+        0 0 45px rgba(255, 58, 242, 0.25),
+        0 0 4px rgba(0, 0, 0, 0.8);
+      background: radial-gradient(circle at top, #151c3a, #050814);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .neon-sign::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .neon-main {
+      font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      animation: neon-flicker 3.6s infinite;
+    }
+
+    .neon-main span.name {
+      color: var(--accent-1);
+      text-shadow:
+        0 0 8px rgba(0, 247, 255, 0.8),
+        0 0 22px rgba(0, 247, 255, 0.9),
+        0 0 40px rgba(0, 247, 255, 1),
+        0 0 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .neon-main span.portfolio {
+      color: var(--accent-2);
+      margin-left: 0.45em;
+      text-shadow:
+        0 0 8px rgba(255, 58, 242, 0.8),
+        0 0 22px rgba(255, 58, 242, 0.9),
+        0 0 40px rgba(255, 58, 242, 1),
+        0 0 2px rgba(0, 0, 0, 0.8);
+    }
+
+    @keyframes neon-flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+        filter: brightness(1);
+      }
+      20%, 24%, 55% {
+        opacity: 0.55;
+        filter: brightness(0.7);
+      }
+      7%, 9% {
+        opacity: 0.6;
+      }
+    }
+
+    /* --- Schnellnavigation --- */
+
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      justify-content: center;
+      margin-bottom: 2.4rem;
+    }
+
+    .quick-nav a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(9, 13, 30, 0.9);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      color: var(--text-muted);
+      font-size: 0.87rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      backdrop-filter: blur(14px);
+      transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .quick-nav a::before {
+      content: "●";
+      font-size: 0.6rem;
+      color: var(--accent-soft);
+      opacity: 0.7;
+    }
+
+    .quick-nav a:hover {
+      background: linear-gradient(90deg, rgba(0, 247, 255, 0.16), rgba(255, 58, 242, 0.14));
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: var(--text-main);
+    }
+
+    /* --- Hero / Split Box --- */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(13, 22, 55, 0.95), rgba(6, 9, 26, 0.98));
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      overflow: hidden;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.15);
+      transform: scale(1.02);
+      transition: transform 0.9s ease, filter 0.9s ease;
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.35), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+
+    .hero-image-info {
+      position: absolute;
+      inset: auto 1rem 1rem 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 14px;
+      background: rgba(2, 4, 12, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transform: translateY(110%);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .hero-image-info strong {
+      color: var(--accent-1);
+      font-weight: 600;
+    }
+
+    .hero-image-wrapper:hover img {
+      transform: scale(1.05);
+      filter: saturate(1.3) contrast(1.05);
+    }
+
+    .hero-image-wrapper:hover .hero-image-overlay {
+      opacity: 1;
+    }
+
+    .hero-image-wrapper:hover .hero-image-info {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+    .hero-info {
+      padding: 1.6rem 1.7rem 1.7rem;
+    }
+
+    .hero-info h1 {
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-info h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .meta-item {
+      background: rgba(1, 3, 12, 0.6);
+      border-radius: 0.9rem;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .meta-item span {
+      display: block;
+    }
+
+    .meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+
+    .meta-value {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .hero-summary {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-summary strong {
+      color: var(--accent-1);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .hero-badges span {
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.2), rgba(6, 10, 28, 0.95));
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    /* --- Sections / Carousel --- */
+
+    section {
+      margin-bottom: 3.2rem;
+    }
+
+    section:last-of-type {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-header {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.35rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-header .section-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(0, 247, 255, 0.08);
+      border: 1px solid rgba(0, 247, 255, 0.4);
+      color: var(--accent-soft);
+    }
+
+    .section-description {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+      max-width: 640px;
+    }
+
+    .carousel {
+      background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.09), rgba(5, 7, 20, 0.96));
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem 1rem 1.2rem;
+    }
+
+    .thumb-row {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.6rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+    }
+
+    .thumb-row::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .thumb-row::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+    }
+
+    .thumb-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .thumb {
+      min-width: 82px;
+      height: 56px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background-size: cover;
+      background-position: center;
+      background-color: #15192a;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.63), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .thumb.active {
+      border-color: var(--accent-1);
+      box-shadow: 0 0 12px rgba(0, 247, 255, 0.6);
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    .thumb:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+      filter: saturate(1.2);
+    }
+
+    .thumb:hover::after {
+      opacity: 1;
+    }
+
+    .thumb-label {
+      position: absolute;
+      left: 0.4rem;
+      bottom: 0.35rem;
+      right: 0.4rem;
+      font-size: 0.7rem;
+      color: var(--text-main);
+      text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      z-index: 1;
+    }
+
+    .carousel-main {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), rgba(1, 3, 12, 0.9));
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(0, 247, 255, 0.7);
+      box-shadow:
+        0 0 12px rgba(0, 247, 255, 0.6),
+        0 9px 20px rgba(0, 0, 0, 0.7);
+      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.25), rgba(1, 3, 12, 0.98));
+    }
+
+    .image-wrapper {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #050712;
+      min-height: 190px;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 340px;
+      transition: transform 0.9s ease;
+    }
+
+    .image-wrapper:hover img {
+      transform: scale(1.02);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.55s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(1.02);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateY(100%);
+      background: rgba(3, 5, 15, 0.8);
+      color: var(--text-main);
+      padding: 0.8rem 1rem 0.9rem;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      transition: transform 0.4s ease;
+    }
+
+    .caption h3 {
+      font-size: 0.92rem;
+      margin-bottom: 0.25rem;
+      color: var(--accent-1);
+    }
+
+    .caption p {
+      color: var(--text-muted);
+    }
+
+    .image-wrapper:hover .caption {
+      transform: translateY(0%);
+    }
+
+    /* --- Kontakt --- */
+
+    .contact-card {
+      background: radial-gradient(circle at top left, rgba(255, 58, 242, 0.12), rgba(6, 9, 26, 0.98));
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem 1.6rem 1.8rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.6rem;
+    }
+
+    .contact-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-text p + p {
+      margin-top: 0.6rem;
+    }
+
+    .contact-highlight {
+      color: var(--accent-1);
+      font-weight: 500;
+    }
+
+    .contact-links {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(5, 7, 20, 0.95);
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .contact-links a:hover {
+      background: linear-gradient(90deg, rgba(0, 247, 255, 0.25), rgba(255, 58, 242, 0.25));
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.65rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.15rem;
+      color: var(--text-muted);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(3, 6, 18, 0.95);
+      padding: 0.55rem 0.8rem;
+      color: var(--text-main);
+      font: inherit;
+      resize: vertical;
+      min-height: 38px;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--accent-1);
+      box-shadow:
+        0 0 8px rgba(0, 247, 255, 0.6),
+        0 0 20px rgba(0, 0, 0, 0.7);
+      background: rgba(2, 7, 22, 1);
+    }
+
+    .contact-form button {
+      margin-top: 0.25rem;
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 247, 255, 0.7);
+      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.5), rgba(3, 6, 18, 1));
+      color: var(--text-main);
+      font-size: 0.9rem;
+      cursor: pointer;
+      justify-self: flex-start;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 16px rgba(0, 247, 255, 0.7),
+        0 10px 24px rgba(0, 0, 0, 0.8);
+      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.7), rgba(3, 6, 18, 1));
+    }
+
+    /* --- Responsive --- */
+
+    @media (max-width: 900px) {
+      body {
+        padding: 0 1rem 2.5rem;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        min-height: 220px;
+      }
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .neon-main {
+        letter-spacing: 0.08em;
+      }
+      .carousel-main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .nav-btn {
+        justify-self: center;
+      }
+      .hero-info {
+        padding: 1.3rem 1.2rem 1.4rem;
+      }
+      .carousel {
+        padding: 0.9rem 0.8rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Neon Header -->
+    <header class="neon-header">
+      <div class="neon-sign">
+        <div class="neon-main">
+          <span class="name">Julia&nbsp;Steidle</span>
+          <span class="portfolio">Portfolio</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Schnellnavigation -->
+    <nav class="quick-nav">
+      <a href="#top">Überblick</a>
+      <a href="#produktdesign">Produktdesign &amp; Merchandise</a>
+      <a href="#interaktiv">Interaktives Design</a>
+      <a href="#videoschnitt">Videoschnitt</a>
+      <a href="#kunst">Kunst &amp; Auftragsdesign</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <!-- Hero / Top Split -->
+    <section id="top" class="hero">
+      <!-- Left: Bild mit Hover Overlay -->
+      <article class="hero-card">
+        <div class="hero-image-wrapper">
+          <!-- DEIN BILD HIER -->
+          <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               alt="Porträt von Julia Steidle im Studio" />
+          <div class="hero-image-overlay"></div>
+          <div class="hero-image-info">
+            <strong>Hover-Info:</strong> Persönliche Fotografie, Self-Portrait oder Studioaufnahme.
+            <br />Ersetze dieses Bild durch dein eigenes Portrait oder ein ästhetisches Symbolbild.
+          </div>
+        </div>
+      </article>
+
+      <!-- Right: Kurz-Lebenslauf -->
+      <article class="hero-card hero-info">
+        <h1>CV · Creative Dashboard</h1>
+        <h2>Julia Steidle</h2>
+        <p class="hero-tagline">
+          UX &amp; Mediengestaltung · Digital Art · Storytelling
+        </p>
+
+        <div class="hero-meta">
+          <div class="meta-item">
+            <span class="meta-label">Schwerpunkt</span>
+            <span class="meta-value">UX, Motion, Visual Design</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Standort</span>
+            <span class="meta-value">Aalen · Deutschland</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Erfahrung</span>
+            <span class="meta-value">Branding, 3D, Illustration</span>
+          </div>
+        </div>
+
+        <p class="hero-summary">
+          Ich arbeite an der Schnittstelle von <strong>Design, Bewegtbild</strong> und
+          <strong>interaktiven Erlebnissen</strong>. Mein Fokus liegt darauf, Marken
+          visuell greifbar zu machen – von Merchandise &amp; Produktdesign bis hin zu
+          UI-Concepts, Videoschnitt und Auftragskunst.
+        </p>
+
+        <div class="hero-badges">
+          <span>Branding &amp; Visual Identity</span>
+          <span>UX / Interaktives Design</span>
+          <span>Illustration &amp; Digital Painting</span>
+          <span>Videoschnitt &amp; Motion</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Produktdesign & Merchandise -->
+    <section id="produktdesign">
+      <div class="section-header">
+        <h2>Produktdesign &amp; Merchandise</h2>
+        <span class="section-pill">Section 02</span>
+      </div>
+      <p class="section-description">
+        Mockups, Packaging, Print-on-Demand, Brand-Merch. Klicke durch die
+        Thumbnails für eine Schnellübersicht – das große Bild darunter wechselt
+        weich mit Fade-In-Effekt.
+      </p>
+
+      <div class="carousel" data-carousel="produktdesign">
+        <div class="thumb-row">
+          <button class="thumb active"
+                  data-index="0"
+                  data-full="https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Coffee Cup Line"
+                  data-caption="Minimalistisches Coffee-Cup-Merch für eine kleine Café-Brand: reduziertes Logo, starke Silhouette, klarer Farbcode."
+                  style="background-image:url('https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Coffee Cups</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="1"
+                  data-full="https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="T-Shirt Artwork"
+                  data-caption="T-Shirt-Design mit illustrativer Frontgrafik und dezentem Typografie-Backprint."
+                  style="background-image:url('https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Shirt Design</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="2"
+                  data-full="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Packaging Concept"
+                  data-caption="Verpackungskonzept mit Fokus auf klarer Typografie, Farbcode und einfacher Haptik."
+                  style="background-image:url('https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Packaging</span>
+          </button>
+        </div>
+
+        <div class="carousel-main">
+          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
+          <div class="image-wrapper">
+            <img src="https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Produktdesign Beispiel" class="fade-in" />
+            <div class="caption">
+              <h3>Coffee Cup Line</h3>
+              <p>Minimalistisches Coffee-Cup-Merch für eine kleine Café-Brand: reduziertes Logo, starke Silhouette, klarer Farbcode.</p>
+            </div>
+          </div>
+          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interaktives Design -->
+    <section id="interaktiv">
+      <div class="section-header">
+        <h2>Interaktives Design</h2>
+        <span class="section-pill">Section 03</span>
+      </div>
+      <p class="section-description">
+        UI-Konzepte, Prototypen und interaktive Oberflächen. Ideal für Apps, Dashboards
+        und Web-Experiences.
+      </p>
+
+      <div class="carousel" data-carousel="interaktiv">
+        <div class="thumb-row">
+          <button class="thumb active"
+                  data-index="0"
+                  data-full="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Dashboard UI"
+                  data-caption="High-Fidelity-Dashboard-Konzept mit Fokus auf Klarheit, Typografie und Data-Visualisierung."
+                  style="background-image:url('https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Dashboard UI</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="1"
+                  data-full="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Mobile Prototype"
+                  data-caption="Mobile-App-Prototyp in Figma / XD – Screenflows, Microinteractions und Layout-Guides."
+                  style="background-image:url('https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Mobile UI</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="2"
+                  data-full="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Landing Page Concept"
+                  data-caption="Interaktive Landing Page mit klarer Typografie-Hierarchie und Scroll-Animationen."
+                  style="background-image:url('https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Landing Page</span>
+          </button>
+        </div>
+
+        <div class="carousel-main">
+          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
+          <div class="image-wrapper">
+            <img src="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Interaktives Design Beispiel" class="fade-in" />
+            <div class="caption">
+              <h3>Dashboard UI</h3>
+              <p>High-Fidelity-Dashboard-Konzept mit Fokus auf Klarheit, Typografie und Data-Visualisierung.</p>
+            </div>
+          </div>
+          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videoschnitt -->
+    <section id="videoschnitt">
+      <div class="section-header">
+        <h2>Videoschnitt</h2>
+        <span class="section-pill">Section 04</span>
+      </div>
+      <p class="section-description">
+        Trailer, Social-Media-Clips und Mood-Videos. Fokus auf Timing, Musik, Typo-Overlays
+        und Storytelling im Bewegtbild.
+      </p>
+
+      <div class="carousel" data-carousel="videoschnitt">
+        <div class="thumb-row">
+          <button class="thumb active"
+                  data-index="0"
+                  data-full="https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Music Teaser"
+                  data-caption="Kurztrailer für einen Song-Release: Schnelle Schnitte, Light-Leaks, subtile Textanimationen."
+                  style="background-image:url('https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Music Teaser</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="1"
+                  data-full="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Social Reel"
+                  data-caption="Vertical Reel für Social Media mit Fokus auf Hook, B-Roll und Overlays."
+                  style="background-image:url('https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Social Reel</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="2"
+                  data-full="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Highlight Cut"
+                  data-caption="Event-Highlight-Video: Storytelling über Bildauswahl, Musikdramaturgie und Colorgrading."
+                  style="background-image:url('https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Highlight Cut</span>
+          </button>
+        </div>
+
+        <div class="carousel-main">
+          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
+          <div class="image-wrapper">
+            <img src="https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Videoschnitt Beispiel" class="fade-in" />
+            <div class="caption">
+              <h3>Music Teaser</h3>
+              <p>Kurztrailer für einen Song-Release: Schnelle Schnitte, Light-Leaks, subtile Textanimationen.</p>
+            </div>
+          </div>
+          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kunst & Auftragsdesign -->
+    <section id="kunst">
+      <div class="section-header">
+        <h2>Kunst &amp; Auftragsdesign</h2>
+        <span class="section-pill">Section 05</span>
+      </div>
+      <p class="section-description">
+        Digitale Gemälde, Illustrationen, Cover-Art und individuelle Auftragsarbeiten
+        – von Fantasy-Portraits bis Branding-Visuals.
+      </p>
+
+      <div class="carousel" data-carousel="kunst">
+        <div class="thumb-row">
+          <button class="thumb active"
+                  data-index="0"
+                  data-full="https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Digital Portrait"
+                  data-caption="Detailreiches digitales Portrait mit Fokus auf Licht, Textur und Stimmung."
+                  style="background-image:url('https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Portrait</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="1"
+                  data-full="https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Editorial Illustration"
+                  data-caption="Illustration mit grafischen Formen und mutiger Farbpalette für Editorial oder Social."
+                  style="background-image:url('https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Illustration</span>
+          </button>
+
+          <button class="thumb"
+                  data-index="2"
+                  data-full="https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  data-title="Album Cover Concept"
+                  data-caption="Cover-Art-Konzept mit symbolischer Bildsprache, Texture Overlays und typografischem Fokus."
+                  style="background-image:url('https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <span class="thumb-label">Cover Art</span>
+          </button>
+        </div>
+
+        <div class="carousel-main">
+          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
+          <div class="image-wrapper">
+            <img src="https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Kunst Beispiel" class="fade-in" />
+            <div class="caption">
+              <h3>Digital Portrait</h3>
+              <p>Detailreiches digitales Portrait mit Fokus auf Licht, Textur und Stimmung.</p>
+            </div>
+          </div>
+          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt">
+      <div class="section-header">
+        <h2>Kontakt</h2>
+        <span class="section-pill">Section 06</span>
+      </div>
+      <p class="section-description">
+        Du möchtest mit mir an einem Projekt arbeiten, ein Artwork anfragen oder
+        Feedback dalassen? Schreib mir direkt über das Formular oder per Mail.
+      </p>
+
+      <div class="contact-card">
+        <div class="contact-text">
+          <p>
+            Ich kombiniere <span class="contact-highlight">konzeptionelles Denken</span>
+            mit einer visuellen Sprache, die zwischen Grafikdesign, Illustration und
+            Bewegtbild steht. Ob Branding, Merch, Interface oder Kunst – ich liebe
+            Projekte, bei denen sich eine Geschichte über Bild und Ton erzählt.
+          </p>
+          <p>
+            Für Aufträge, Kollaborationen oder Fragen:
+          </p>
+          <div class="contact-links">
+            <a href="mailto:hello@julia-steidle.de">hello@julia-steidle.de</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+            <a href="#">Artstation / Behance</a>
+          </div>
+        </div>
+
+        <form class="contact-form">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Dein Name" />
+          </div>
+          <div>
+            <label for="email">E-Mail</label>
+            <input id="email" type="email" placeholder="name@example.com" />
+          </div>
+          <div>
+            <label for="message">Nachricht</label>
+            <textarea id="message" rows="4" placeholder="Worum geht es? Projekt, Idee oder einfach Hallo sagen."></textarea>
+          </div>
+          <button type="submit">Nachricht senden</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Allgemeine Carousel-Logik für alle Sektionen
+    document.querySelectorAll(".carousel").forEach(function (carousel) {
+      const thumbs = Array.from(carousel.querySelectorAll(".thumb"));
+      const img = carousel.querySelector(".image-wrapper img");
+      const captionTitle = carousel.querySelector(".caption h3");
+      const captionText = carousel.querySelector(".caption p");
+      const prevBtn = carousel.querySelector(".nav-btn.prev");
+      const nextBtn = carousel.querySelector(".nav-btn.next");
+
+      let currentIndex = 0;
+
+      function setActive(index) {
+        if (!thumbs[index]) return;
+        currentIndex = index;
+
+        thumbs.forEach((t) => t.classList.remove("active"));
+        const activeThumb = thumbs[currentIndex];
+        activeThumb.classList.add("active");
+
+        const full = activeThumb.getAttribute("data-full");
+        const title = activeThumb.getAttribute("data-title") || "";
+        const text = activeThumb.getAttribute("data-caption") || "";
+
+        // Fade neu triggern
+        img.classList.remove("fade-in");
+        void img.offsetWidth; // Reflow, um Animation neu zu starten
+        img.src = full;
+        img.alt = title;
+        img.classList.add("fade-in");
+
+        captionTitle.textContent = title;
+        captionText.textContent = text;
+      }
+
+      thumbs.forEach(function (thumb, index) {
+        thumb.addEventListener("click", function () {
+          setActive(index);
+        });
+      });
+
+      prevBtn.addEventListener("click", function () {
+        const newIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+        setActive(newIndex);
+      });
+
+      nextBtn.addEventListener("click", function () {
+        const newIndex = (currentIndex + 1) % thumbs.length;
+        setActive(newIndex);
+      });
+    });
+
+    // Smooth Scroll für Schnellnavigation (optional hübscher)
+    document.querySelectorAll('.quick-nav a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href").slice(1);
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        window.scrollTo({
+          top: target.offsetTop - 20,
+          behavior: "smooth",
+        });
+      });
+    });
+  </script>
+</body>
+</html>
