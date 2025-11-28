@@ -113,6 +113,165 @@
       }
     }
 
+    /* tools */
+
+    .tools-panel {
+  background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.08), rgba(6, 9, 26, 0.98));
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-soft);
+  padding: 1.1rem 1.3rem 1.4rem;
+}
+
+.tools-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.tools-search {
+  flex: 1 1 220px;
+}
+
+.tools-search input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(3, 6, 18, 0.95);
+  padding: 0.45rem 0.9rem;
+  color: var(--text-main);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.tools-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.tools-search input:focus {
+  border-color: var(--accent-1);
+  box-shadow:
+    0 0 8px rgba(0, 247, 255, 0.6),
+    0 0 20px rgba(0, 0, 0, 0.7);
+  background: rgba(2, 7, 22, 1);
+}
+
+.tools-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+.tool-filter {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(5, 7, 20, 0.95);
+  color: var(--text-muted);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.tool-filter:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 247, 255, 0.7);
+  color: var(--text-main);
+}
+
+.tool-filter.active {
+  background: linear-gradient(90deg, rgba(0, 247, 255, 0.25), rgba(255, 58, 242, 0.25));
+  color: var(--text-main);
+  border-color: rgba(0, 247, 255, 0.8);
+}
+
+.tool-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+
+.tool-item {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  padding: 0.45rem 0.65rem;
+  border-radius: 14px;
+  background: rgba(3, 5, 15, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.82rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.tool-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+  border-color: rgba(0, 247, 255, 0.6);
+  background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.18), rgba(3, 5, 15, 0.98));
+}
+
+.tool-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-top: 0.25rem;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Farbcodes nach Kategorie */
+.dot-paint { color: #ffb347; background: currentColor; }   /* Malen/Illustration */
+.dot-ux    { color: #8f9bff; background: currentColor; }   /* UX/Prototyping */
+.dot-video { color: #ff6f91; background: currentColor; }   /* Video/Audio */
+.dot-3d    { color: #00f7ff; background: currentColor; }   /* 3D */
+.dot-other { color: #b3b7d9; background: currentColor; }   /* Sonstiges */
+
+.tool-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.tool-name-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+
+.tool-name {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.tool-level {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.tool-tags {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .tools-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .tools-filters {
+    justify-content: flex-start;
+  }
+}
+
+
     /* --- Schnellnavigation --- */
 
     .quick-nav {
@@ -533,6 +692,106 @@
     .image-wrapper:hover .caption {
       transform: translateY(0%);
     }
+
+    /* tool sections-- */
+
+    <section id="tools">
+  <div class="section-header">
+    <h2>Tools &amp; Programme</h2>
+    <span class="section-pill">Skill Set</span>
+  </div>
+  <p class="section-description">
+    Eine Übersicht über die wichtigsten Programme, mit denen ich arbeite.
+    Über die Suche und Filter kannst du gezielt nach Bereichen wie Malprogramme,
+    3D oder Videoschnitt filtern.
+  </p>
+
+  <div class="tools-panel">
+    <div class="tools-top">
+      <div class="tools-search">
+        <input id="tool-search" type="text" placeholder="Suche nach Programm, z.B. »Photoshop«" />
+      </div>
+      <div class="tools-filters">
+        <button class="tool-filter active" data-filter="all">Alle</button>
+        <button class="tool-filter" data-filter="paint">Malen / Illustration</button>
+        <button class="tool-filter" data-filter="ux">UX / Prototyping</button>
+        <button class="tool-filter" data-filter="video">Video / Audio</button>
+        <button class="tool-filter" data-filter="3d">3D &amp; Rendering</button>
+        <button class="tool-filter" data-filter="other">Sonstiges</button>
+      </div>
+    </div>
+
+    <ul class="tool-grid">
+      <!-- Beispiel-Einträge – hier trägst du deine echten Programme ein -->
+      <li class="tool-item" data-category="paint" data-name="adobe photoshop malen painting compositing">
+        <span class="tool-dot dot-paint"></span>
+        <div class="tool-text">
+          <div class="tool-name-row">
+            <span class="tool-name">Adobe Photoshop</span>
+            <span class="tool-level">●●●●○</span>
+          </div>
+          <span class="tool-tags">Digital Painting · Compositing · Retusche</span>
+        </div>
+      </li>
+
+      <li class="tool-item" data-category="paint" data-name="procreate ipad drawing illustration">
+        <span class="tool-dot dot-paint"></span>
+        <div class="tool-text">
+          <div class="tool-name-row">
+            <span class="tool-name">Procreate</span>
+            <span class="tool-level">●●●●●</span>
+          </div>
+          <span class="tool-tags">Illustration · Brushes · Sketching</span>
+        </div>
+      </li>
+
+      <li class="tool-item" data-category="ux" data-name="figma ux ui prototyping">
+        <span class="tool-dot dot-ux"></span>
+        <div class="tool-text">
+          <div class="tool-name-row">
+            <span class="tool-name">Figma</span>
+            <span class="tool-level">●●●●○</span>
+          </div>
+          <span class="tool-tags">UI Design · Prototyping · Komponenten</span>
+        </div>
+      </li>
+
+      <li class="tool-item" data-category="video" data-name="adobe premiere pro videoschnitt editing">
+        <span class="tool-dot dot-video"></span>
+        <div class="tool-text">
+          <div class="tool-name-row">
+            <span class="tool-name">Adobe Premiere Pro</span>
+            <span class="tool-level">●●●○○</span>
+          </div>
+          <span class="tool-tags">Videoschnitt · Social Clips · Trailer</span>
+        </div>
+      </li>
+
+      <li class="tool-item" data-category="3d" data-name="blender 3d modeling sculpting">
+        <span class="tool-dot dot-3d"></span>
+        <div class="tool-text">
+          <div class="tool-name-row">
+            <span class="tool-name">Blender</span>
+            <span class="tool-level">●●○○○</span>
+          </div>
+          <span class="tool-tags">3D Modeling · Lighting · Render</span>
+        </div>
+      </li>
+
+      <li class="tool-item" data-category="other" data-name="notion organisation management">
+        <span class="tool-dot dot-other"></span>
+        <div class="tool-text">
+          <div class="tool-name-row">
+            <span class="tool-name">Notion</span>
+            <span class="tool-level">●●●○○</span>
+          </div>
+          <span class="tool-tags">Organisation · Wissensmanagement</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
 
     /* --- Kontakt --- */
 
@@ -1053,7 +1312,7 @@
 
         // Fade neu triggern
         img.classList.remove("fade-in");
-        void img.offsetWidth; // Reflow, um Animation neu zu starten
+        void img.offsetWidth;  
         img.src = full;
         img.alt = title;
         img.classList.add("fade-in");
@@ -1079,7 +1338,7 @@
       });
     });
 
-    // Smooth Scroll für Schnellnavigation (optional hübscher)
+    // Smooth Scroll für Schnellnavigation  
     document.querySelectorAll('.quick-nav a[href^="#"]').forEach((link) => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
@@ -1092,6 +1351,50 @@
         });
       });
     });
+
+    // tools
+    // Tools: Suche + Filter
+(function () {
+  const searchInput = document.getElementById("tool-search");
+  const filterButtons = Array.from(document.querySelectorAll(".tool-filter"));
+  const items = Array.from(document.querySelectorAll(".tool-item"));
+
+  let activeFilter = "all";
+
+  function applyToolsFilter() {
+    const query = (searchInput?.value || "").toLowerCase().trim();
+
+    items.forEach((item) => {
+      const cat = item.getAttribute("data-category");
+      const name = (item.getAttribute("data-name") || "").toLowerCase();
+
+      const matchesFilter = activeFilter === "all" || cat === activeFilter;
+      const matchesSearch = !query || name.includes(query);
+
+      if (matchesFilter && matchesSearch) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", applyToolsFilter);
+  }
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeFilter = btn.getAttribute("data-filter") || "all";
+      applyToolsFilter();
+    });
+  });
+
+  applyToolsFilter();
+})();
+
   </script>
 </body>
 </html>
