@@ -2,22 +2,26 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Julia Steidle - Portfolio</title>
+  <title>Julia Steidle – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg: #050812;
-      --bg-elevated: #0c1020;
-      --accent-1: #00f7ff;
-      --accent-2: #ff3af2;
-      --accent-soft: #8f9bff;
-      --text-main: #fdfdfd;
-      --text-muted: #b3b7d9;
-      --border-soft: rgba(255, 255, 255, 0.08);
-      --radius-lg: 18px;
-      --radius-xl: 22px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
-      --transition-fast: 0.25s ease;
+      --bg-page: #f5f5f8;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f0f2f7;
+      --border-subtle: #dadde7;
+      --border-strong: #c1c6d6;
+      --text-main: #1f2430;
+      --text-muted: #6b7280;
+      --accent: #3259d4;
+      --accent-soft: #e0e6fb;
+      --accent-strong: #233e9b;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.12);
+      --shadow-subtle: 0 10px 24px rgba(15, 23, 42, 0.06);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.26s ease;
     }
 
     * {
@@ -29,227 +33,192 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #141b35, #050812 55%, #02030a);
+      background: var(--bg-page);
       color: var(--text-main);
       line-height: 1.6;
-      padding: 0 1.5rem 3rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     main {
       max-width: 1120px;
       margin: 0 auto;
+      padding: 5.25rem 1.5rem 3rem;
     }
 
-    /* --- Neon Header --- */
+    /* --- Sticky Header / Nav --- */
 
-    .neon-header {
-      text-align: center;
-      margin: 2.8rem auto 1.8rem;
+    .site-shell {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      backdrop-filter: blur(16px);
+      background: rgba(245, 245, 248, 0.88);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.6);
     }
 
-    .neon-sign {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      border-radius: 32px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow:
-        0 0 18px rgba(0, 247, 255, 0.25),
-        0 0 45px rgba(255, 58, 242, 0.25),
-        0 0 4px rgba(0, 0, 0, 0.8);
-      background: radial-gradient(circle at top, #151c3a, #050814);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .neon-sign::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 55%);
-      mix-blend-mode: screen;
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .neon-main {
-      font-size: clamp(1.7rem, 3.2vw, 2.2rem);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      animation: neon-flicker 3.6s infinite;
-    }
-
-    .neon-main span.name {
-      color: var(--accent-1);
-      text-shadow:
-        0 0 8px rgba(0, 247, 255, 0.8),
-        0 0 22px rgba(0, 247, 255, 0.9),
-        0 0 40px rgba(0, 247, 255, 1),
-        0 0 2px rgba(0, 0, 0, 0.8);
-    }
-
-    .neon-main span.portfolio {
-      color: var(--accent-2);
-      margin-left: 0.45em;
-      text-shadow:
-        0 0 8px rgba(255, 58, 242, 0.8),
-        0 0 22px rgba(255, 58, 242, 0.9),
-        0 0 40px rgba(255, 58, 242, 1),
-        0 0 2px rgba(0, 0, 0, 0.8);
-    }
-
-    @keyframes neon-flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        opacity: 1;
-        filter: brightness(1);
-      }
-      20%, 24%, 55% {
-        opacity: 0.55;
-        filter: brightness(0.7);
-      }
-      7%, 9% {
-        opacity: 0.6;
-      }
-    }
-
-    /* --- Schnellnavigation --- */
-
-    .quick-nav {
+    .site-header {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.6rem 1.5rem 0.55rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      justify-content: center;
-      margin-bottom: 2.4rem;
-    }
-
-    .quick-nav a {
-      padding: 0.5rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(9, 13, 30, 0.9);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-      color: var(--text-muted);
-      font-size: 0.87rem;
-      text-decoration: none;
-      display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      backdrop-filter: blur(14px);
-      transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    .quick-nav a::before {
-      content: "●";
-      font-size: 0.6rem;
-      color: var(--accent-soft);
-      opacity: 0.7;
+    .logo-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
     }
 
-    .quick-nav a:hover {
-      background: linear-gradient(90deg, rgba(0, 247, 255, 0.16), rgba(255, 58, 242, 0.14));
+    .logo-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .logo-title span.name {
+      color: var(--accent-strong);
+    }
+
+    .logo-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast),
+        border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-strong);
+      background: #e5e7f4;
+      border-color: rgba(148, 163, 184, 0.6);
       transform: translateY(-1px);
-      border-color: rgba(255, 255, 255, 0.4);
-      color: var(--text-main);
     }
 
-    /* --- Hero / Split Box --- */
+    .nav-link.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent-strong);
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+        box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    }
+
+    /* --- Hero --- */
 
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 1.5rem;
+      gap: 1.6rem;
       margin-bottom: 3rem;
     }
 
     .hero-card {
-      background: linear-gradient(135deg, rgba(13, 22, 55, 0.95), rgba(6, 9, 26, 0.98));
+      background: var(--bg-surface);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-soft);
+      border: 1px solid var(--border-subtle);
       overflow: hidden;
-      position: relative;
     }
 
-    .hero-image-wrapper {
+    .hero-photo {
       position: relative;
-      width: 100%;
       height: 100%;
-      min-height: 240px;
-      overflow: hidden;
+      min-height: 260px;
+      background: #cbd5e1;
     }
 
-    .hero-image-wrapper img {
+    .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      filter: saturate(1.15);
-      transform: scale(1.02);
-      transition: transform 0.9s ease, filter 0.9s ease;
     }
 
-    .hero-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.35), transparent 55%);
-      mix-blend-mode: screen;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-      pointer-events: none;
-    }
-
-    .hero-image-info {
+    .hero-photo-badge {
       position: absolute;
       inset: auto 1rem 1rem 1rem;
-      padding: 0.8rem 1rem;
-      border-radius: 14px;
-      background: rgba(2, 4, 12, 0.86);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transform: translateY(110%);
-      opacity: 0;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      font-size: 0.83rem;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
-    .hero-image-info strong {
-      color: var(--accent-1);
-      font-weight: 600;
-    }
-
-    .hero-image-wrapper:hover img {
-      transform: scale(1.05);
-      filter: saturate(1.3) contrast(1.05);
-    }
-
-    .hero-image-wrapper:hover .hero-image-overlay {
-      opacity: 1;
-    }
-
-    .hero-image-wrapper:hover .hero-image-info {
-      transform: translateY(0%);
-      opacity: 1;
+    .hero-photo-badge span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
     }
 
     .hero-info {
       padding: 1.6rem 1.7rem 1.7rem;
     }
 
-    .hero-info h1 {
-      font-size: 1.15rem;
-      letter-spacing: 0.18em;
+    .hero-eyebrow {
+      font-size: 0.8rem;
       text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 0.7rem;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+      margin-bottom: 0.4rem;
     }
 
-    .hero-info h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.15rem;
+    .hero-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
     }
 
-    .hero-tagline {
+    .hero-role {
       font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 1rem;
@@ -257,94 +226,88 @@
 
     .hero-meta {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.8rem;
       margin-bottom: 1rem;
+      font-size: 0.84rem;
     }
 
-    .meta-item {
-      background: rgba(1, 3, 12, 0.6);
-      border-radius: 0.9rem;
-      padding: 0.55rem 0.75rem;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      font-size: 0.82rem;
+    .hero-meta-item {
+      padding: 0.55rem 0.7rem;
+      border-radius: 12px;
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .hero-meta-label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--text-muted);
     }
 
-    .meta-item span {
-      display: block;
-    }
-
-    .meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.7rem;
-      opacity: 0.8;
-    }
-
-    .meta-value {
-      color: var(--text-main);
+    .hero-meta-value {
       font-weight: 500;
+      margin-top: 0.1rem;
     }
 
     .hero-summary {
       font-size: 0.86rem;
       color: var(--text-muted);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
     .hero-summary strong {
-      color: var(--accent-1);
+      color: var(--accent-strong);
     }
 
-    .hero-badges {
+    .hero-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      font-size: 0.78rem;
+      gap: 0.35rem;
+      font-size: 0.8rem;
     }
 
-    .hero-badges span {
+    .hero-tags span {
       border-radius: 999px;
-      padding: 0.25rem 0.75rem;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.2), rgba(6, 10, 28, 0.95));
-      color: var(--text-main);
-      white-space: nowrap;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-alt);
+      color: var(--text-muted);
     }
 
-    /* --- Sections / Carousel --- */
+    /* --- Section Layout --- */
 
     section {
-      margin-bottom: 3.2rem;
+      margin-bottom: 3rem;
     }
 
     section:last-of-type {
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
     }
 
     .section-header {
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
       display: flex;
-      align-items: center;
-      gap: 0.7rem;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.75rem;
     }
 
     .section-header h2 {
       font-size: 1.35rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-weight: 600;
     }
 
-    .section-header .section-pill {
-      font-size: 0.7rem;
+    .section-pill {
+      font-size: 0.74rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 0.25rem 0.65rem;
+      letter-spacing: 0.16em;
+      padding: 0.18rem 0.6rem;
       border-radius: 999px;
-      background: rgba(0, 247, 255, 0.08);
-      border: 1px solid rgba(0, 247, 255, 0.4);
-      color: var(--accent-soft);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
     }
 
     .section-description {
@@ -354,386 +317,243 @@
       max-width: 640px;
     }
 
-    .carousel {
-      background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.09), rgba(5, 7, 20, 0.96));
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: var(--shadow-soft);
-      padding: 1rem 1rem 1.2rem;
+    /* --- Portfolio Grid + Carousel --- */
+
+    .portfolio-block {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.2rem 1.3rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
     }
 
-    .thumb-row {
-      display: flex;
-      gap: 0.6rem;
-      overflow-x: auto;
-      padding-bottom: 0.6rem;
-      margin-bottom: 0.6rem;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
-    }
-
-    .thumb-row::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .thumb-row::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 999px;
-    }
-
-    .thumb-row::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .thumb {
-      min-width: 82px;
-      height: 56px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background-size: cover;
-      background-position: center;
-      background-color: #15192a;
-      cursor: pointer;
-      position: relative;
-      flex-shrink: 0;
-      overflow: hidden;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), filter var(--transition-fast);
-    }
-
-    .thumb::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.63), transparent 60%);
-      opacity: 0;
-      transition: opacity var(--transition-fast);
-    }
-
-    .thumb.active {
-      border-color: var(--accent-1);
-      box-shadow: 0 0 12px rgba(0, 247, 255, 0.6);
-      transform: translateY(-1px) scale(1.02);
-    }
-
-    .thumb:hover {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
-      filter: saturate(1.2);
-    }
-
-    .thumb:hover::after {
-      opacity: 1;
-    }
-
-    .thumb-label {
-      position: absolute;
-      left: 0.4rem;
-      bottom: 0.35rem;
-      right: 0.4rem;
-      font-size: 0.7rem;
-      color: var(--text-main);
-      text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      z-index: 1;
-    }
-
-    .carousel-main {
+    .work-grid {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .work-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-alt);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .work-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-subtle);
+      border-color: var(--accent);
+      background: #eef1fb;
+    }
+
+    .work-thumb {
+      height: 140px;
+      background: #cbd5e1;
+      overflow: hidden;
+    }
+
+    .work-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-med);
+    }
+
+    .work-card:hover .work-thumb img {
+      transform: scale(1.03);
+    }
+
+    .work-body {
+      padding: 0.6rem 0.7rem 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .work-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .work-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .work-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .work-grid-footer {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .work-grid-hint {
+      display: flex;
       align-items: center;
       gap: 0.4rem;
     }
 
-    .nav-btn {
-      width: 36px;
-      height: 36px;
+    .work-grid-hint span.dot {
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), rgba(1, 3, 12, 0.9));
-      color: var(--text-main);
-      cursor: pointer;
+      background: var(--accent);
+    }
+
+    .work-grid-cta {
+      font-size: 0.8rem;
+      color: var(--accent-strong);
+    }
+
+    /* --- Carousel (aufklappbar) --- */
+
+    .work-carousel {
+      margin-top: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #f8fafc;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .work-carousel.open {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 540px; /* genug für Bild + Text + Controls */
+    }
+
+    .work-carousel-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .work-carousel-media {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #cbd5e1;
+    }
+
+    .work-carousel-media img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      transition: opacity 0.2s ease;
+    }
+
+    .work-carousel-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.86rem;
+    }
+
+    .work-carousel-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .work-carousel-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .work-carousel-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .work-carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .work-carousel-buttons {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .carousel-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(0, 247, 255, 0.7);
-      box-shadow:
-        0 0 12px rgba(0, 247, 255, 0.6),
-        0 9px 20px rgba(0, 0, 0, 0.7);
-      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.25), rgba(1, 3, 12, 0.98));
-    }
-
-    .image-wrapper {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: #050712;
-      min-height: 190px;
-    }
-
-    .image-wrapper img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      max-height: 340px;
-      transition: transform 0.9s ease;
-    }
-
-    .image-wrapper:hover img {
-      transform: scale(1.02);
-    }
-
-    .fade-in {
-      animation: fadeIn 0.55s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(1.02);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      transform: translateY(100%);
-      background: rgba(3, 5, 15, 0.8);
-      color: var(--text-main);
-      padding: 0.8rem 1rem 0.9rem;
-      font-size: 0.85rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.09);
-      transition: transform 0.4s ease;
-    }
-
-    .caption h3 {
-      font-size: 0.92rem;
-      margin-bottom: 0.25rem;
-      color: var(--accent-1);
-    }
-
-    .caption p {
-      color: var(--text-muted);
-    }
-
-    .image-wrapper:hover .caption {
-      transform: translateY(0%);
-    }
-
-    /* --- Tools --- */
-
-    .tools-panel {
-      background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.08), rgba(6, 9, 26, 0.98));
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: var(--shadow-soft);
-      padding: 1.1rem 1.3rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      max-height: 320px;
-    }
-
-    .tools-top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.6rem;
-    }
-
-    .tools-search {
-      flex: 1 1 220px;
-    }
-
-    .tool-grid {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 0.45rem;
-      margin-top: 0.4rem;
-      max-height: 220px;
-      overflow-y: auto;
-      padding-right: 0.3rem;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
-    }
-
-    .tool-grid::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .tool-grid::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .tool-grid::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 999px;
-    }
-
-    @media (max-width: 700px) {
-      .tools-panel {
-        max-height: 260px;
-      }
-      .tool-grid {
-        max-height: 180px;
-      }
-    }
-
-    .tools-search input {
-      width: 100%;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background: rgba(3, 6, 18, 0.95);
-      padding: 0.45rem 0.9rem;
-      color: var(--text-main);
-      font: inherit;
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .tools-search input::placeholder {
-      color: var(--text-muted);
-    }
-
-    .tools-search input:focus {
-      border-color: var(--accent-1);
-      box-shadow:
-        0 0 8px rgba(0, 247, 255, 0.6),
-        0 0 20px rgba(0, 0, 0, 0.7);
-      background: rgba(2, 7, 22, 1);
-    }
-
-    .tools-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      justify-content: flex-end;
-    }
-
-    .tool-filter {
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(5, 7, 20, 0.95);
-      color: var(--text-muted);
-      padding: 0.3rem 0.7rem;
-      font-size: 0.78rem;
       cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      font-size: 1rem;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+        border-color var(--transition-fast), box-shadow var(--transition-fast);
     }
 
-    .tool-filter:hover {
+    .carousel-btn:hover {
+      background: #e5e7f4;
+      border-color: var(--accent);
       transform: translateY(-1px);
-      border-color: rgba(0, 247, 255, 0.7);
-      color: var(--text-main);
+      box-shadow: 0 8px 18px rgba(148, 163, 184, 0.4);
     }
 
-    .tool-filter.active {
-      background: linear-gradient(90deg, rgba(0, 247, 255, 0.25), rgba(255, 58, 242, 0.25));
-      color: var(--text-main);
-      border-color: rgba(0, 247, 255, 0.8);
-    }
-
-    .tool-item {
-      display: flex;
-      gap: 0.55rem;
-      align-items: flex-start;
-      padding: 0.45rem 0.65rem;
-      border-radius: 14px;
-      background: rgba(3, 5, 15, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 0.82rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .tool-item:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
-      border-color: rgba(0, 247, 255, 0.6);
-      background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.18), rgba(3, 5, 15, 0.98));
-    }
-
-    .tool-dot {
-      width: 10px;
-      height: 10px;
+    .carousel-close {
       border-radius: 999px;
-      margin-top: 0.25rem;
-      box-shadow: 0 0 8px currentColor;
-    }
-
-    .dot-paint { color: #ffb347; background: currentColor; }   /* Illustration */
-    .dot-ux    { color: #8f9bff; background: currentColor; }   /* UX/UI */
-    .dot-other { color: #b3b7d9; background: currentColor; }   /* Sonstiges */
-
-    .tool-text {
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-
-    .tool-name-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.4rem;
-      align-items: baseline;
-    }
-
-    .tool-name {
-      font-weight: 500;
-      color: var(--text-main);
-    }
-
-    .tool-level {
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      cursor: pointer;
+      font-size: 0.78rem;
       color: var(--text-muted);
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast);
     }
 
-    .tool-tags {
-      font-size: 0.76rem;
-      color: var(--text-muted);
+    .carousel-close:hover {
+      background: #e5e7f4;
+      border-color: var(--accent);
+      transform: translateY(-1px);
     }
 
-    @media (max-width: 700px) {
-      .tools-top {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .tools-filters {
-        justify-content: flex-start;
-      }
+    .work-carousel:focus-within {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     /* --- Kontakt --- */
 
-    .contact-card {
-      background: radial-gradient(circle at top left, rgba(255, 58, 242, 0.12), rgba(6, 9, 26, 0.98));
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: var(--shadow-soft);
-      padding: 1.5rem 1.6rem 1.8rem;
+    .contact-block {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      padding: 1.4rem 1.4rem 1.6rem;
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 1.6rem;
-    }
-
-    .contact-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      font-size: 0.86rem;
     }
 
     .contact-text p + p {
@@ -741,38 +561,38 @@
     }
 
     .contact-highlight {
-      color: var(--accent-1);
+      color: var(--accent-strong);
       font-weight: 500;
     }
 
     .contact-links {
-      margin-top: 0.9rem;
+      margin-top: 0.8rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
-      font-size: 0.85rem;
     }
 
     .contact-links a {
-      text-decoration: none;
-      color: var(--text-main);
-      padding: 0.35rem 0.8rem;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(5, 7, 20, 0.95);
-      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-alt);
+      color: var(--text-muted);
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast);
     }
 
     .contact-links a:hover {
-      background: linear-gradient(90deg, rgba(0, 247, 255, 0.25), rgba(255, 58, 242, 0.25));
+      background: #e5e7f4;
+      border-color: var(--accent);
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
     }
 
     .contact-form {
       display: grid;
-      gap: 0.65rem;
-      font-size: 0.85rem;
+      gap: 0.6rem;
+      font-size: 0.84rem;
     }
 
     .contact-form label {
@@ -784,363 +604,630 @@
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(3, 6, 18, 0.95);
-      padding: 0.55rem 0.8rem;
-      color: var(--text-main);
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 0.7rem;
       font: inherit;
-      resize: vertical;
-      min-height: 38px;
+      background: var(--bg-surface-alt);
+      color: var(--text-main);
       outline: none;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      resize: vertical;
+      min-height: 36px;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast);
     }
 
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: var(--accent-1);
-      box-shadow:
-        0 0 8px rgba(0, 247, 255, 0.6),
-        0 0 20px rgba(0, 0, 0, 0.7);
-      background: rgba(2, 7, 22, 1);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(50, 89, 212, 0.35);
+      background: #ffffff;
     }
 
     .contact-form button {
-      margin-top: 0.25rem;
-      padding: 0.6rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 247, 255, 0.7);
-      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.5), rgba(3, 6, 18, 1));
-      color: var(--text-main);
-      font-size: 0.9rem;
-      cursor: pointer;
       justify-self: flex-start;
+      margin-top: 0.2rem;
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.82rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+        box-shadow var(--transition-fast), border-color var(--transition-fast);
     }
 
     .contact-form button:hover {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
       transform: translateY(-1px);
-      box-shadow:
-        0 0 16px rgba(0, 247, 255, 0.7),
-        0 10px 24px rgba(0, 0, 0, 0.8);
-      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.7), rgba(3, 6, 18, 1));
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
     }
 
     /* --- Responsive --- */
 
-    @media (max-width: 900px) {
-      body {
-        padding: 0 1rem 2.5rem;
-      }
+    @media (max-width: 920px) {
       .hero {
         grid-template-columns: 1fr;
       }
-      .hero-card {
+      .hero-photo {
         min-height: 220px;
       }
-      .contact-card {
+      .work-carousel-inner {
+        grid-template-columns: 1fr;
+      }
+      .work-carousel.open {
+        max-height: 620px;
+      }
+      .contact-block {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 600px) {
-      .neon-main {
-        letter-spacing: 0.08em;
+    @media (max-width: 640px) {
+      main {
+        padding: 4.4rem 1.1rem 2.5rem;
       }
-      .carousel-main {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-      }
-      .nav-btn {
-        justify-self: center;
+      .site-header {
+        padding-inline: 1.1rem;
       }
       .hero-info {
-        padding: 1.3rem 1.2rem 1.4rem;
+        padding: 1.3rem 1.3rem 1.4rem;
       }
-      .carousel {
-        padding: 0.9rem 0.8rem 1rem;
+      .portfolio-block {
+        padding: 1rem 1rem 1.15rem;
+      }
+      .work-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <!-- Neon Header -->
-    <header class="neon-header">
-      <div class="neon-sign">
-        <div class="neon-main">
-          <span class="name">Julia&nbsp;Steidle</span>
-          <span class="portfolio">Portfolio</span>
+  <!-- Sticky Header -->
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="logo-block">
+        <div class="logo-title">
+          <span class="name">Julia&nbsp;Steidle</span> · Portfolio
         </div>
+        <div class="logo-sub">Werkstudentin UI/UX &amp; Mediengestaltung</div>
       </div>
+      <nav class="main-nav">
+        <button class="nav-link active" data-target="top">Überblick</button>
+        <button class="nav-link" data-target="produktdesign">Produktdesign</button>
+        <button class="nav-link" data-target="interaktiv">Interaktives Design</button>
+        <button class="nav-link" data-target="videoschnitt">Videoschnitt</button>
+        <button class="nav-link" data-target="kunst">Kunst</button>
+        <button class="nav-link" data-target="kontakt">Kontakt</button>
+        <button class="nav-cta" data-target="kontakt">Kontakt</button>
+      </nav>
     </header>
+  </div>
 
-    <!-- Schnellnavigation -->
-    <nav class="quick-nav">
-      <a href="#top">Überblick</a>
-      <a href="#ux">UI/UX &amp; Webdesign</a>
-      <a href="#illustration">Illustration</a>
-      <a href="#tools">Tools</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-
-    <!-- Hero / Top Split -->
+  <main>
+    <!-- Hero -->
     <section id="top" class="hero">
       <article class="hero-card">
-        <div class="hero-image-wrapper">
-          <img src=" " alt="Illustratives Porträt" />
-          <div class="hero-image-overlay"></div>
-          <div class="hero-image-info">
-            <strong>Hinweis:</strong> Hier kann ein eigenes UI/Art-Visual hin –
-            z.B. ein Ausschnitt aus einer Illustration oder einem Interface.
+        <div class="hero-photo">
+          <!-- Dein Bild -->
+          <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               alt="Porträt von Julia Steidle im Studio" />
+          <div class="hero-photo-badge">
+            <span class="dot"></span>
+            Verfügbar für Werkstudentenstellen &amp; Freelance-Projekte
           </div>
         </div>
       </article>
 
-      <!-- Right: Kurz-Lebenslauf -->
       <article class="hero-card hero-info">
-        <h1>Portfolio · UI/UX &amp; Illustration</h1>
-        <h2>Julia Steidle</h2>
-        <p class="hero-tagline">
-          User Experience · Interface Design · Illustration
+        <div class="hero-eyebrow">UX · Visual · Motion</div>
+        <h1 class="hero-title">Julia Steidle</h1>
+        <p class="hero-role">
+          UI/UX &amp; Mediengestaltung mit Schwerpunkt auf visuellen Interfaces,
+          Bewegtbild und Illustrationen.
         </p>
 
         <div class="hero-meta">
-          <div class="meta-item">
-            <span class="meta-label">Schwerpunkt</span>
-            <span class="meta-value">UI/UX &amp; Webdesign</span>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Schwerpunkt</span>
+            <span class="hero-meta-value">UI/UX, Prototyping, Visual Design</span>
           </div>
-          <div class="meta-item">
-            <span class="meta-label">Standort</span>
-            <span class="meta-value">Aalen · Deutschland</span>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Standort</span>
+            <span class="hero-meta-value">Aalen · Baden-Württemberg</span>
           </div>
-          <div class="meta-item">
-            <span class="meta-label">Erfahrung</span>
-            <span class="meta-value">Illustration &amp; Visual Design</span>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Erfahrung</span>
+            <span class="hero-meta-value">Branding, Art, Videoschnitt</span>
           </div>
         </div>
 
         <p class="hero-summary">
-          Ich studiere <strong>User Experience</strong> und arbeite an
-          <strong>Interfaces</strong>, die klar, nutzerfreundlich und visuell
-          stimmig sind. Parallel dazu erstelle ich <strong>Illustrationen</strong>
-          und visuelle Konzepte – von ersten Skizzen bis zu ausgearbeiteten Motiven.
-          Für Werkstudententätigkeiten im Bereich UI/UX, Webdesign oder Visual Design
-          bringe ich sowohl gestalterische als auch konzeptionelle Erfahrung mit.
+          Ich verbinde <strong>strukturierte UX-Workflows</strong> mit einer starken
+          visuellen Sprache. Von Produkt- &amp; Merch-Design über
+          <strong>interaktive Interfaces</strong> bis hin zu Video und Auftragskunst
+          begleite ich Projekte von Idee bis fertigem Asset.
         </p>
 
-        <div class="hero-badges">
-          <span>UX-Studium</span>
-          <span>UI-Konzepte</span>
-          <span>Illustration</span>
+        <div class="hero-tags">
+          <span>UX-Flows &amp; Prototyping</span>
+          <span>UI/Visual Design</span>
+          <span>Digital Painting &amp; Illustration</span>
+          <span>Videoschnitt &amp; Social Content</span>
         </div>
       </article>
     </section>
 
-    <!-- Tools -->
-    <section id="tools">
+    <!-- Produktdesign & Merchandise -->
+    <section id="produktdesign">
       <div class="section-header">
-        <h2>Tools &amp; Programme</h2>
-        <span class="section-pill">Skill Set</span>
+        <h2>Produktdesign &amp; Merchandise</h2>
+        <span class="section-pill">Übersicht</span>
       </div>
       <p class="section-description">
-        Eine kompakte Übersicht über die wichtigsten Programme, mit denen ich im
-        Bereich UI/UX, Webdesign und Illustration arbeite.
+        Auswahl an Packaging, Merch- und Print-Designs. Über das Grid kannst du einzelne
+        Arbeiten öffnen; darunter klappt eine Detailansicht als Carousel auf.
       </p>
 
-      <div class="tools-panel">
-        <div class="tools-top">
-          <div class="tools-search">
-            <input id="tool-search" type="text" placeholder="Suche nach Programm, z.B. »Figma«" />
-          </div>
-          <div class="tools-filters">
-            <button class="tool-filter active" data-filter="all">Alle</button>
-            <button class="tool-filter" data-filter="ux">UI/UX &amp; Web</button>
-            <button class="tool-filter" data-filter="paint">Illustration</button>
-          </div>
+      <div class="portfolio-block portfolio-section" data-section="produktdesign">
+        <div class="work-grid">
+          <!-- Karten: einfach duplizieren / ändern -->
+          <article
+            class="work-card"
+            data-index="0"
+            data-image="https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Coffee Cup Line"
+            data-meta="Branding &amp; Merch · Café"
+            data-desc="Minimalistisches Coffee-Cup-Design für ein lokales Café. Fokus auf klare Silhouette, gut lesbares Logo und reproduzierbare Farbwelt für Print &amp; Social."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Coffee Cup Line Mockup"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Coffee Cup Line</div>
+              <div class="work-meta">Branding &amp; Merchandise</div>
+              <div class="work-tagline">Logo, Farbwelt &amp; Anwendung auf Cups</div>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-index="1"
+            data-image="https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="T-Shirt Artwork"
+            data-meta="Illustratives Merch-Design"
+            data-desc="T-Shirt-Design mit Frontillustration und reduziertem Backprint. Konzipiert für Online-Shop &amp; Live-Merch."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="T-Shirt Artwork"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">T-Shirt Artwork</div>
+              <div class="work-meta">Merch · Illustration</div>
+              <div class="work-tagline">Illustration &amp; Typografie kombiniert</div>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-index="2"
+            data-image="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Packaging Concept"
+            data-meta="Verpackungsdesign"
+            data-desc="Konzept für eine Produktverpackung mit klarer Hierarchie, gut lesbarer Typografie und skalierbaren Grafikelementen."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Packaging Concept"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Packaging Concept</div>
+              <div class="work-meta">Packaging</div>
+              <div class="work-tagline">Klar strukturierte Verpackungsoberfläche</div>
+            </div>
+          </article>
+
+          <!-- Mehr Arbeiten nach Bedarf -->
+          <article
+            class="work-card"
+            data-index="3"
+            data-image="https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Sticker Set"
+            data-meta="Print-on-Demand"
+            data-desc="Verspieltes Sticker-Set mit wiederkehrenden Motiven, optimiert für Online-Verkauf &amp; Print."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Sticker Set"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Sticker Set</div>
+              <div class="work-meta">Print-on-Demand</div>
+              <div class="work-tagline">Illustrative Icons &amp; Patterns</div>
+            </div>
+          </article>
         </div>
 
-        <ul class="tool-grid">
-          <li class="tool-item" data-category="ux" data-name="figma ui ux prototyping design systems web">
-            <span class="tool-dot dot-ux"></span>
-            <div class="tool-text">
-              <div class="tool-name-row">
-                <span class="tool-name">Figma</span>
-                <span class="tool-level">●●●●○</span>
-              </div>
-              <span class="tool-tags">UI-Design · Prototyping · Design-Systeme</span>
-            </div>
-          </li>
-
-          <li class="tool-item" data-category="ux" data-name="adobe xd ui prototype">
-            <span class="tool-dot dot-ux"></span>
-            <div class="tool-text">
-              <div class="tool-name-row">
-                <span class="tool-name">Adobe XD</span>
-                <span class="tool-level">●●●○○</span>
-              </div>
-              <span class="tool-tags">Wireframes · einfache Prototypen</span>
-            </div>
-          </li>
-
-          <li class="tool-item" data-category="ux" data-name="html css webdesign basic">
-            <span class="tool-dot dot-ux"></span>
-            <div class="tool-text">
-              <div class="tool-name-row">
-                <span class="tool-name">HTML &amp; CSS</span>
-                <span class="tool-level">●●●○○</span>
-              </div>
-              <span class="tool-tags">Struktur · Layout · Grund-Implementierungen</span>
-            </div>
-          </li>
-
-          <li class="tool-item" data-category="paint" data-name="adobe photoshop malen painting compositing">
-            <span class="tool-dot dot-paint"></span>
-            <div class="tool-text">
-              <div class="tool-name-row">
-                <span class="tool-name">Adobe Photoshop</span>
-                <span class="tool-level">●●●●○</span>
-              </div>
-              <span class="tool-tags">Digital Painting · Compositing · Retusche</span>
-            </div>
-          </li>
-
-          <li class="tool-item" data-category="paint" data-name="procreate ipad drawing illustration">
-            <span class="tool-dot dot-paint"></span>
-            <div class="tool-text">
-              <div class="tool-name-row">
-                <span class="tool-name">Procreate</span>
-                <span class="tool-level">●●●●●</span>
-              </div>
-              <span class="tool-tags">Illustration · Brushes · Sketching</span>
-            </div>
-          </li>
-
-          <li class="tool-item" data-category="paint" data-name="canva layout social media">
-            <span class="tool-dot dot-paint"></span>
-            <div class="tool-text">
-              <div class="tool-name-row">
-                <span class="tool-name">Canva</span>
-                <span class="tool-level">●●●●○</span>
-              </div>
-              <span class="tool-tags">Schnelle Layouts · Social Visuals · Präsentationen</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- UI/UX & Webdesign -->
-    <section id="ux">
-      <div class="section-header">
-        <h2>UI/UX &amp; Webdesign</h2>
-        <span class="section-pill">Interfaces</span>
-      </div>
-      <p class="section-description">
-        Beispiele aus UI-Konzepte, Weblayouts und Prototypen: von Dashboards über Mobile-Apps
-        bis zu Landingpage-Ideen. Ziel: klare Strukturen, gute Lesbarkeit und ein stimmiger Look.
-      </p>
-
-      <div class="carousel" data-carousel="ux">
-        <div class="thumb-row">
-          <button class="thumb active"
-                  data-index="0"
-                  data-full="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Dashboard UI"
-                  data-caption="High-Fidelity-Dashboard-Konzept mit Fokus auf Klarheit, Lesbarkeit und einfache Navigation."
-                  style="background-image:url('https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Dashboard UI</span>
-          </button>
-
-          <button class="thumb"
-                  data-index="1"
-                  data-full="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Mobile Prototype"
-                  data-caption="Mobile-App-Prototyp – Screenflows, einfache Microinteractions und strukturierte Layout-Guides."
-                  style="background-image:url('https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Mobile UI</span>
-          </button>
-
-          <button class="thumb"
-                  data-index="2"
-                  data-full="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Landing Page Concept"
-                  data-caption="Landing-Page-Konzept mit klarer Typografie-Hierarchie, großen Headline-Bereichen und strukturierter Call-to-Action."
-                  style="background-image:url('https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Landing Page</span>
-          </button>
+        <div class="work-grid-footer">
+          <div class="work-grid-hint">
+            <span class="dot"></span>
+            <span>Arbeit auswählen, um Detailansicht zu öffnen.</span>
+          </div>
+          <div class="work-grid-cta">Klick für „View Detail &amp; Carousel“</div>
         </div>
 
-        <div class="carousel-main">
-          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
-          <div class="image-wrapper">
-            <img src="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="UI/UX Beispiel" class="fade-in" />
-            <div class="caption">
-              <h3>Dashboard UI</h3>
-              <p>High-Fidelity-Dashboard-Konzept mit Fokus auf Klarheit, Lesbarkeit und einfache Navigation.</p>
+        <!-- Aufklappbares Carousel -->
+        <div class="work-carousel" data-carousel>
+          <div class="work-carousel-inner" tabindex="-1">
+            <div class="work-carousel-media">
+              <img src="" alt="" />
+            </div>
+            <div class="work-carousel-meta">
+              <div class="work-carousel-title"></div>
+              <div class="work-carousel-sub"></div>
+              <div class="work-carousel-desc"></div>
+              <div class="work-carousel-controls">
+                <div class="work-carousel-buttons">
+                  <button class="carousel-btn" data-prev aria-label="Vorherige Arbeit (Pfeil links)">
+                    &#8592;
+                  </button>
+                  <button class="carousel-btn" data-next aria-label="Nächste Arbeit (Pfeil rechts)">
+                    &#8594;
+                  </button>
+                </div>
+                <button class="carousel-close" type="button">
+                  Schließen (Esc)
+                </button>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;">
+                Tipp: Mit Pfeiltasten links/rechts navigierbar.
+              </div>
             </div>
           </div>
-          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
         </div>
       </div>
     </section>
 
-    <!-- Illustration -->
-    <section id="illustration">
+    <!-- Interaktives Design -->
+    <section id="interaktiv">
       <div class="section-header">
-        <h2>Illustration</h2>
-        <span class="section-pill">Visuals</span>
+        <h2>Interaktives Design</h2>
+        <span class="section-pill">UI &amp; Prototyping</span>
       </div>
       <p class="section-description">
-        Digitale Gemälde, Illustrationen und visuelle Motive, die Stil, Lichtstimmung und
-        Symbolik verbinden. Die Arbeiten lassen sich u.a. in Interfaces, Covers oder Kampagnen
-        einbinden.
+        UI-Konzepte, Prototypen und klickbare Flows. Fokus liegt auf klarer
+        Hierarchie, Lesbarkeit und passender Visual Language.
       </p>
 
-      <div class="carousel" data-carousel="illustration">
-        <div class="thumb-row">
-          <button class="thumb active"
-                  data-index="0"
-                  data-full="https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Digital Portrait"
-                  data-caption="Detailreiches digitales Portrait mit Fokus auf Licht, Textur und Stimmung."
-                  style="background-image:url('https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Portrait</span>
-          </button>
+      <div class="portfolio-block portfolio-section" data-section="interaktiv">
+        <div class="work-grid">
+          <article
+            class="work-card"
+            data-index="0"
+            data-image="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Dashboard UI"
+            data-meta="High-Fidelity Prototype"
+            data-desc="Konzept für ein Daten-Dashboard mit Fokus auf Übersichtlichkeit, Farb-Hierarchie und responsiver Gestaltung."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Dashboard UI"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Dashboard UI</div>
+              <div class="work-meta">Web · High-Fidelity</div>
+              <div class="work-tagline">KPI-Übersicht &amp; Filterkonzept</div>
+            </div>
+          </article>
 
-          <button class="thumb"
-                  data-index="1"
-                  data-full="https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Editorial Illustration"
-                  data-caption="Illustration mit grafischen Formen und mutiger Farbpalette – geeignet für Editorial oder Social Media."
-                  style="background-image:url('https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Illustration</span>
-          </button>
+          <article
+            class="work-card"
+            data-index="1"
+            data-image="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Mobile App Flow"
+            data-meta="Figma Prototype"
+            data-desc="Mobile-Prototyp mit Screenflow, Zustand-Handling und Microinteractions für Kern-Usecases."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Mobile App Flow"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Mobile App Flow</div>
+              <div class="work-meta">App · UX Flow</div>
+              <div class="work-tagline">User Journey &amp; Klick-Prototyp</div>
+            </div>
+          </article>
 
-          <button class="thumb"
-                  data-index="2"
-                  data-full="https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Cover Concept"
-                  data-caption="Cover-Art-Konzept mit symbolischer Bildsprache, Texture Overlays und typografischem Fokus."
-                  style="background-image:url('https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Cover Art</span>
-          </button>
+          <article
+            class="work-card"
+            data-index="2"
+            data-image="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Landing Page Concept"
+            data-meta="Responsive Web"
+            data-desc="Landingpage-Konzept mit klarer Typo-Hierarchie, Hero-Visual und modularen Content-Blöcken."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Landing Page Concept"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Landing Page Concept</div>
+              <div class="work-meta">Web · Konzept</div>
+              <div class="work-tagline">Hero, Sections &amp; CTA-Struktur</div>
+            </div>
+          </article>
         </div>
 
-        <div class="carousel-main">
-          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
-          <div class="image-wrapper">
-            <img src="https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Illustrationsbeispiel" class="fade-in" />
-            <div class="caption">
-              <h3>Digital Portrait</h3>
-              <p>Detailreiches digitales Portrait mit Fokus auf Licht, Textur und Stimmung.</p>
+        <div class="work-grid-footer">
+          <div class="work-grid-hint">
+            <span class="dot"></span>
+            <span>Eine Arbeit öffnen, um Details &amp; weitere Varianten zu sehen.</span>
+          </div>
+          <div class="work-grid-cta">View Detail &amp; Carousel</div>
+        </div>
+
+        <div class="work-carousel" data-carousel>
+          <div class="work-carousel-inner" tabindex="-1">
+            <div class="work-carousel-media">
+              <img src="" alt="" />
+            </div>
+            <div class="work-carousel-meta">
+              <div class="work-carousel-title"></div>
+              <div class="work-carousel-sub"></div>
+              <div class="work-carousel-desc"></div>
+              <div class="work-carousel-controls">
+                <div class="work-carousel-buttons">
+                  <button class="carousel-btn" data-prev>&#8592;</button>
+                  <button class="carousel-btn" data-next>&#8594;</button>
+                </div>
+                <button class="carousel-close" type="button">Schließen (Esc)</button>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;">
+                Pfeiltasten links/rechts zur Navigation nutzbar.
+              </div>
             </div>
           </div>
-          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videoschnitt -->
+    <section id="videoschnitt">
+      <div class="section-header">
+        <h2>Videoschnitt</h2>
+        <span class="section-pill">Bewegtbild</span>
+      </div>
+      <p class="section-description">
+        Trailer, Social-Reels und Mood-Videos. Fokus auf Storytelling, Rhythmus und
+        saubere Typo-Overlays.
+      </p>
+
+      <div class="portfolio-block portfolio-section" data-section="videoschnitt">
+        <div class="work-grid">
+          <article
+            class="work-card"
+            data-index="0"
+            data-image="https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Music Teaser"
+            data-meta="Teaser-Clip"
+            data-desc="Kurztrailer für einen Song-Release. Fokus auf Hook-Momente, Farblook und Schnitte auf Musik."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Music Teaser"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Music Teaser</div>
+              <div class="work-meta">Social · Teaser</div>
+              <div class="work-tagline">Kurze, prägnante Visual Story</div>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-index="1"
+            data-image="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Social Reel"
+            data-meta="Vertical Edit"
+            data-desc="Reel für Social Media, optimiert für Mobile: schnelle Schnitte, Overlays, eingeblendete Lyrics."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Social Reel"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Social Reel</div>
+              <div class="work-meta">Vertical · Social</div>
+              <div class="work-tagline">Hook, B-Roll &amp; Overlays</div>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-index="2"
+            data-image="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Event Highlight"
+            data-meta="Highlight-Video"
+            data-desc="Eventzusammenfassung mit Fokus auf Atmosphäre, Key Moments und musikalischer Dramaturgie."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Event Highlight"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Event Highlight</div>
+              <div class="work-meta">Event · Recap</div>
+              <div class="work-tagline">Storytelling über Bild &amp; Musik</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="work-grid-footer">
+          <div class="work-grid-hint">
+            <span class="dot"></span>
+            <span>Arbeit auswählen, um Details zu sehen.</span>
+          </div>
+          <div class="work-grid-cta">View Detail &amp; Carousel</div>
+        </div>
+
+        <div class="work-carousel" data-carousel>
+          <div class="work-carousel-inner" tabindex="-1">
+            <div class="work-carousel-media">
+              <img src="" alt="" />
+            </div>
+            <div class="work-carousel-meta">
+              <div class="work-carousel-title"></div>
+              <div class="work-carousel-sub"></div>
+              <div class="work-carousel-desc"></div>
+              <div class="work-carousel-controls">
+                <div class="work-carousel-buttons">
+                  <button class="carousel-btn" data-prev>&#8592;</button>
+                  <button class="carousel-btn" data-next>&#8594;</button>
+                </div>
+                <button class="carousel-close" type="button">Schließen (Esc)</button>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;">
+                Pfeiltasten links/rechts zur Navigation nutzbar.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kunst & Auftragsdesign -->
+    <section id="kunst">
+      <div class="section-header">
+        <h2>Kunst &amp; Auftragsdesign</h2>
+        <span class="section-pill">Illustration</span>
+      </div>
+      <p class="section-description">
+        Digitale Gemälde, Cover-Art und Illustrationen. Auftragsarbeiten und freie Serien,
+        oft mit symbolischer Bildsprache.
+      </p>
+
+      <div class="portfolio-block portfolio-section" data-section="kunst">
+        <div class="work-grid">
+          <article
+            class="work-card"
+            data-index="0"
+            data-image="https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Digital Portrait"
+            data-meta="Auftragsillustration"
+            data-desc="Detailreiches digitales Portrait, Fokus auf Lichtführung, Hauttextur und Ausdruck."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Digital Portrait"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Digital Portrait</div>
+              <div class="work-meta">Portrait · Auftragsarbeit</div>
+              <div class="work-tagline">Realistische, weiche Lichtführung</div>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-index="1"
+            data-image="https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Editorial Illustration"
+            data-meta="Magazin / Social"
+            data-desc="Illustration im Editorial-Stil mit klaren Formen und reduzierter Farbpalette."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Editorial Illustration"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Editorial Illustration</div>
+              <div class="work-meta">Editorial · Illustration</div>
+              <div class="work-tagline">Grafische Komposition &amp; Symbolik</div>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-index="2"
+            data-image="https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            data-title="Album Cover Concept"
+            data-meta="Cover-Art"
+            data-desc="Cover-Konzept mit symbolischer Komposition, Texture-Overlays und typografischer Integration."
+          >
+            <div class="work-thumb">
+              <img
+                src="https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Album Cover Concept"
+              />
+            </div>
+            <div class="work-body">
+              <div class="work-title">Album Cover Concept</div>
+              <div class="work-meta">Cover · Visual</div>
+              <div class="work-tagline">Symbolische Bildsprache &amp; Mood</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="work-grid-footer">
+          <div class="work-grid-hint">
+            <span class="dot"></span>
+            <span>Arbeit anklicken, um Details &amp; weitere Varianten zu sehen.</span>
+          </div>
+          <div class="work-grid-cta">View Detail &amp; Carousel</div>
+        </div>
+
+        <div class="work-carousel" data-carousel>
+          <div class="work-carousel-inner" tabindex="-1">
+            <div class="work-carousel-media">
+              <img src="" alt="" />
+            </div>
+            <div class="work-carousel-meta">
+              <div class="work-carousel-title"></div>
+              <div class="work-carousel-sub"></div>
+              <div class="work-carousel-desc"></div>
+              <div class="work-carousel-controls">
+                <div class="work-carousel-buttons">
+                  <button class="carousel-btn" data-prev>&#8592;</button>
+                  <button class="carousel-btn" data-next>&#8594;</button>
+                </div>
+                <button class="carousel-close" type="button">Schließen (Esc)</button>
+              </div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;">
+                Pfeiltasten links/rechts zur Navigation nutzbar.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1149,26 +1236,29 @@
     <section id="kontakt">
       <div class="section-header">
         <h2>Kontakt</h2>
-        <span class="section-pill">Let's talk</span>
+        <span class="section-pill">Zusammenarbeit</span>
       </div>
       <p class="section-description">
-        Für Werkstudentenstellen, Projekte in UI/UX, Webdesign oder Illustration – oder einfach,
-        um einen Einblick in meine Arbeitsweise zu bekommen – kannst du mich gern direkt kontaktieren.
+        Für Werkstudentenstellen, Projektanfragen oder Kollaborationen – schreib mir
+        gern kurz, worum es geht.
       </p>
 
-      <div class="contact-card">
+      <div class="contact-block">
         <div class="contact-text">
           <p>
-            Ich arbeite gern strukturiert, aber mit Raum für Experimente: von ersten Skizzen und
-            Wireframes bis hin zu detaillierten Visuals.
+            Ich arbeite am liebsten in Teams, in denen <span class="contact-highlight">
+            UX, Visual Design und Content</span> eng zusammenspielen. Besonders spannend
+            finde ich Projekte im Bereich digitale Produkte, Kultur &amp; Medien.
           </p>
           <p>
-            Für Anfragen oder Fragen:
+            Für Rückfragen oder Arbeitsproben im Detail kannst du mich direkt per Mail
+            kontaktieren oder das Formular nutzen:
           </p>
           <div class="contact-links">
-            <a href="mailto:joulie.info@gmail.com">joulie.info@gmail.com</a>
+            <a href="mailto:hello@julia-steidle.de">hello@julia-steidle.de</a>
             <a href="#">LinkedIn</a>
-            <a href="#">Portfolio-Profile (Behance / Artstation)</a>
+            <a href="#">Instagram</a>
+            <a href="#">Behance / Artstation</a>
           </div>
         </div>
 
@@ -1183,7 +1273,7 @@
           </div>
           <div>
             <label for="message">Nachricht</label>
-            <textarea id="message" rows="4" placeholder="Worum geht es? Projekt, Stelle oder einfach Hallo sagen."></textarea>
+            <textarea id="message" rows="4" placeholder="Kurz zum Projekt oder Anliegen."></textarea>
           </div>
           <button type="submit">Nachricht senden</button>
         </form>
@@ -1192,110 +1282,152 @@
   </main>
 
   <script>
-    // Allgemeine Carousel-Logik für alle Sektionen
-    document.querySelectorAll(".carousel").forEach(function (carousel) {
-      const thumbs = Array.from(carousel.querySelectorAll(".thumb"));
-      const img = carousel.querySelector(".image-wrapper img");
-      const captionTitle = carousel.querySelector(".caption h3");
-      const captionText = carousel.querySelector(".caption p");
-      const prevBtn = carousel.querySelector(".nav-btn.prev");
-      const nextBtn = carousel.querySelector(".nav-btn.next");
+    // Smooth Scroll + Sticky Nav Active-State
+    (function () {
+      const navButtons = Array.from(document.querySelectorAll(".main-nav [data-target]"));
 
-      let currentIndex = 0;
-
-      function setActive(index) {
-        if (!thumbs[index]) return;
-        currentIndex = index;
-
-        thumbs.forEach((t) => t.classList.remove("active"));
-        const activeThumb = thumbs[currentIndex];
-        activeThumb.classList.add("active");
-
-        const full = activeThumb.getAttribute("data-full");
-        const title = activeThumb.getAttribute("data-title") || "";
-        const text = activeThumb.getAttribute("data-caption") || "";
-
-        img.classList.remove("fade-in");
-        void img.offsetWidth;
-        img.src = full;
-        img.alt = title;
-        img.classList.add("fade-in");
-
-        captionTitle.textContent = title;
-        captionText.textContent = text;
+      function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const offset = window.pageYOffset + rect.top - 72; // Platz unter sticky Header
+        window.scrollTo({ top: offset, behavior: "smooth" });
       }
 
-      thumbs.forEach(function (thumb, index) {
-        thumb.addEventListener("click", function () {
-          setActive(index);
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-target");
+          scrollToSection(target);
         });
       });
 
-      prevBtn.addEventListener("click", function () {
-        const newIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
-        setActive(newIndex);
-      });
+      // Active Nav beim Scrollen
+      const sections = ["top", "produktdesign", "interaktiv", "videoschnitt", "kunst", "kontakt"]
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
 
-      nextBtn.addEventListener("click", function () {
-        const newIndex = (currentIndex + 1) % thumbs.length;
-        setActive(newIndex);
-      });
-    });
+      function updateActiveNav() {
+        const scrollPos = window.scrollY;
+        let currentId = "top";
 
-    // Smooth Scroll für Schnellnavigation
-    document.querySelectorAll('.quick-nav a[href^="#"]').forEach((link) => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute("href").slice(1);
-        const target = document.getElementById(targetId);
-        if (!target) return;
-        window.scrollTo({
-          top: target.offsetTop - 20,
-          behavior: "smooth",
+        sections.forEach((sec) => {
+          const top = sec.offsetTop - 100; // Puffer
+          if (scrollPos >= top) currentId = sec.id;
         });
-      });
-    });
 
-    // Tools: Suche + Filter
-    (function () {
-      const searchInput = document.getElementById("tool-search");
-      const filterButtons = Array.from(document.querySelectorAll(".tool-filter"));
-      const items = Array.from(document.querySelectorAll(".tool-item"));
-
-      let activeFilter = "all";
-
-      function applyToolsFilter() {
-        const query = (searchInput?.value || "").toLowerCase().trim();
-
-        items.forEach((item) => {
-          const cat = item.getAttribute("data-category");
-          const name = (item.getAttribute("data-name") || "").toLowerCase();
-
-          const matchesFilter = activeFilter === "all" || cat === activeFilter;
-          const matchesSearch = !query || name.includes(query);
-
-          if (matchesFilter && matchesSearch) {
-            item.style.display = "";
-          } else {
-            item.style.display = "none";
+        navButtons.forEach((btn) => {
+          if (btn.getAttribute("data-target") === currentId) {
+            btn.classList.add("active");
+          } else if (!btn.classList.contains("nav-cta")) {
+            btn.classList.remove("active");
           }
         });
       }
 
-      if (searchInput) {
-        searchInput.addEventListener("input", applyToolsFilter);
+      window.addEventListener("scroll", updateActiveNav);
+      updateActiveNav();
+    })();
+
+    // Grid -> Carousel Logik mit Pfeiltasten
+    (function () {
+      const sections = Array.from(document.querySelectorAll(".portfolio-section"));
+      let currentOpen = null; // { sectionEl, cards, carousel, index }
+
+      function openCarousel(sectionEl, index) {
+        const cards = Array.from(sectionEl.querySelectorAll(".work-card"));
+        const carousel = sectionEl.querySelector("[data-carousel]");
+        if (!carousel || !cards.length) return;
+
+        currentOpen = { sectionEl, cards, carousel, index };
+
+        carousel.classList.add("open");
+        updateSlide(currentOpen, index);
+
+        const focusTarget = carousel.querySelector(".work-carousel-inner");
+        if (focusTarget) {
+          focusTarget.focus({ preventScroll: true });
+        }
       }
 
-      filterButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          filterButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          activeFilter = btn.getAttribute("data-filter") || "all";
-          applyToolsFilter();
+      function closeCarousel() {
+        if (!currentOpen) return;
+        currentOpen.carousel.classList.remove("open");
+        currentOpen = null;
+      }
+
+      function updateSlide(state, index) {
+        const { cards, carousel } = state;
+        if (!cards[index]) return;
+        state.index = index;
+
+        const card = cards[index];
+        const imgSrc = card.getAttribute("data-image");
+        const title = card.getAttribute("data-title") || "";
+        const meta = card.getAttribute("data-meta") || "";
+        const desc = card.getAttribute("data-desc") || "";
+
+        const imgEl = carousel.querySelector(".work-carousel-media img");
+        const titleEl = carousel.querySelector(".work-carousel-title");
+        const subEl = carousel.querySelector(".work-carousel-sub");
+        const descEl = carousel.querySelector(".work-carousel-desc");
+
+        if (imgEl) {
+          imgEl.style.opacity = "0";
+          requestAnimationFrame(() => {
+            imgEl.src = imgSrc;
+            imgEl.alt = title;
+            imgEl.onload = () => {
+              imgEl.style.opacity = "1";
+            };
+          });
+        }
+        if (titleEl) titleEl.textContent = title;
+        if (subEl) subEl.innerHTML = meta;
+        if (descEl) descEl.textContent = desc;
+      }
+
+      function changeSlide(delta) {
+        if (!currentOpen) return;
+        const { cards, index } = currentOpen;
+        const nextIndex = (index + delta + cards.length) % cards.length;
+        updateSlide(currentOpen, nextIndex);
+      }
+
+      sections.forEach((sectionEl) => {
+        const cards = Array.from(sectionEl.querySelectorAll(".work-card"));
+        const carousel = sectionEl.querySelector("[data-carousel]");
+        if (!carousel || !cards.length) return;
+
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+            const idx = parseInt(card.getAttribute("data-index") || "0", 10);
+            openCarousel(sectionEl, idx);
+          });
         });
+
+        const prevBtn = carousel.querySelector("[data-prev]");
+        const nextBtn = carousel.querySelector("[data-next]");
+        const closeBtn = carousel.querySelector(".carousel-close");
+
+        if (prevBtn) prevBtn.addEventListener("click", () => changeSlide(-1));
+        if (nextBtn) nextBtn.addEventListener("click", () => changeSlide(1));
+        if (closeBtn) closeBtn.addEventListener("click", closeCarousel);
       });
 
-      applyToolsFilter();
+      // Keyboard: Pfeile + Esc
+      document.addEventListener("keydown", (e) => {
+        if (!currentOpen) return;
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          changeSlide(-1);
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault();
+          changeSlide(1);
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          closeCarousel();
+        }
+      });
     })();
   </script>
 </body>
