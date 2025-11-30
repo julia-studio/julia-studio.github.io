@@ -113,204 +113,6 @@
       }
     }
 
-    /* tools */
-
-    .tools-panel {
-  background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.08), rgba(6, 9, 26, 0.98));
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: var(--shadow-soft);
-  padding: 1.1rem 1.3rem 1.4rem;
-        display: flex;
-  flex-direction: column;
-  max-height: 320px; 
-}
-
-.tools-top {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.6rem;
-}
-
-.tools-search {
-  flex: 1 1 220px;
-}
-
-    .tool-grid {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 0.45rem;
-  margin-top: 0.4rem;
-
-  max-height: 220px;   
-  overflow-y: auto;
-  padding-right: 0.3rem;   
-       scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
-}
-
-    .tool-grid::-webkit-scrollbar {
-  width: 6px;
-}
-
-.tool-grid::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.tool-grid::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 999px;
-}
-
-    @media (max-width: 700px) {
-  .tools-panel {
-    max-height: 260px;
-  }
-  .tool-grid {
-    max-height: 180px;
-  }
-}
-
-.tools-search input {
-  width: 100%;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(3, 6, 18, 0.95);
-  padding: 0.45rem 0.9rem;
-  color: var(--text-main);
-  font: inherit;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.tools-search input::placeholder {
-  color: var(--text-muted);
-}
-
-.tools-search input:focus {
-  border-color: var(--accent-1);
-  box-shadow:
-    0 0 8px rgba(0, 247, 255, 0.6),
-    0 0 20px rgba(0, 0, 0, 0.7);
-  background: rgba(2, 7, 22, 1);
-}
-
-.tools-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  justify-content: flex-end;
-}
-
-.tool-filter {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(5, 7, 20, 0.95);
-  color: var(--text-muted);
-  padding: 0.3rem 0.7rem;
-  font-size: 0.78rem;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.tool-filter:hover {
-  transform: translateY(-1px);
-  border-color: rgba(0, 247, 255, 0.7);
-  color: var(--text-main);
-}
-
-.tool-filter.active {
-  background: linear-gradient(90deg, rgba(0, 247, 255, 0.25), rgba(255, 58, 242, 0.25));
-  color: var(--text-main);
-  border-color: rgba(0, 247, 255, 0.8);
-}
-
-.tool-grid {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 0.45rem;
-  margin-top: 0.4rem;
-}
-
-.tool-item {
-  display: flex;
-  gap: 0.55rem;
-  align-items: flex-start;
-  padding: 0.45rem 0.65rem;
-  border-radius: 14px;
-  background: rgba(3, 5, 15, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 0.82rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.tool-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
-  border-color: rgba(0, 247, 255, 0.6);
-  background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.18), rgba(3, 5, 15, 0.98));
-}
-
-.tool-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  margin-top: 0.25rem;
-  box-shadow: 0 0 8px currentColor;
-}
-
-/* Farbcodes nach Kategorie */
-.dot-paint { color: #ffb347; background: currentColor; }   /* Malen/Illustration */
-.dot-ux    { color: #8f9bff; background: currentColor; }   /* UX/Prototyping */
-.dot-video { color: #ff6f91; background: currentColor; }   /* Video/Audio */
-.dot-3d    { color: #00f7ff; background: currentColor; }   /* 3D */
-.dot-other { color: #b3b7d9; background: currentColor; }   /* Sonstiges */
-
-.tool-text {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.tool-name-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.4rem;
-  align-items: baseline;
-}
-
-.tool-name {
-  font-weight: 500;
-  color: var(--text-main);
-}
-
-.tool-level {
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-}
-
-.tool-tags {
-  font-size: 0.76rem;
-  color: var(--text-muted);
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-  .tools-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .tools-filters {
-    justify-content: flex-start;
-  }
-}
-
-
     /* --- Schnellnavigation --- */
 
     .quick-nav {
@@ -732,8 +534,189 @@
       transform: translateY(0%);
     }
 
-    
+    /* --- Tools --- */
 
+    .tools-panel {
+      background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.08), rgba(6, 9, 26, 0.98));
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-soft);
+      padding: 1.1rem 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      max-height: 320px;
+    }
+
+    .tools-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .tools-search {
+      flex: 1 1 220px;
+    }
+
+    .tool-grid {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+    }
+
+    .tool-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .tool-grid::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .tool-grid::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 999px;
+    }
+
+    @media (max-width: 700px) {
+      .tools-panel {
+        max-height: 260px;
+      }
+      .tool-grid {
+        max-height: 180px;
+      }
+    }
+
+    .tools-search input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(3, 6, 18, 0.95);
+      padding: 0.45rem 0.9rem;
+      color: var(--text-main);
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .tools-search input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .tools-search input:focus {
+      border-color: var(--accent-1);
+      box-shadow:
+        0 0 8px rgba(0, 247, 255, 0.6),
+        0 0 20px rgba(0, 0, 0, 0.7);
+      background: rgba(2, 7, 22, 1);
+    }
+
+    .tools-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      justify-content: flex-end;
+    }
+
+    .tool-filter {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(5, 7, 20, 0.95);
+      color: var(--text-muted);
+      padding: 0.3rem 0.7rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .tool-filter:hover {
+      transform: translateY(-1px);
+      border-color: rgba(0, 247, 255, 0.7);
+      color: var(--text-main);
+    }
+
+    .tool-filter.active {
+      background: linear-gradient(90deg, rgba(0, 247, 255, 0.25), rgba(255, 58, 242, 0.25));
+      color: var(--text-main);
+      border-color: rgba(0, 247, 255, 0.8);
+    }
+
+    .tool-item {
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+      padding: 0.45rem 0.65rem;
+      border-radius: 14px;
+      background: rgba(3, 5, 15, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.82rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .tool-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+      border-color: rgba(0, 247, 255, 0.6);
+      background: radial-gradient(circle at top left, rgba(0, 247, 255, 0.18), rgba(3, 5, 15, 0.98));
+    }
+
+    .tool-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      margin-top: 0.25rem;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .dot-paint { color: #ffb347; background: currentColor; }   /* Illustration */
+    .dot-ux    { color: #8f9bff; background: currentColor; }   /* UX/UI */
+    .dot-other { color: #b3b7d9; background: currentColor; }   /* Sonstiges */
+
+    .tool-text {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .tool-name-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+      align-items: baseline;
+    }
+
+    .tool-name {
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .tool-level {
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .tool-tags {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 700px) {
+      .tools-top {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .tools-filters {
+        justify-content: flex-start;
+      }
+    }
 
     /* --- Kontakt --- */
 
@@ -897,41 +880,37 @@
     <!-- Schnellnavigation -->
     <nav class="quick-nav">
       <a href="#top">Überblick</a>
-      <a href="#produktdesign">Produktdesign &amp; Merchandise</a>
-      <a href="#interaktiv">Interaktives Design</a>
-  
-      <a href="#kunst">Kunst &amp; Auftragsdesign</a>
+      <a href="#ux">UI/UX &amp; Webdesign</a>
+      <a href="#illustration">Illustration</a>
+      <a href="#tools">Tools</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
 
     <!-- Hero / Top Split -->
     <section id="top" class="hero">
-  
       <article class="hero-card">
         <div class="hero-image-wrapper">
- 
-          <img src=" "
-               alt="Porträt von Julia Steidle" />
+          <img src=" " alt="Illustratives Porträt" />
           <div class="hero-image-overlay"></div>
           <div class="hero-image-info">
-            <strong>Hover-Info:</strong> abcdf
-            <br />BILD USW
+            <strong>Hinweis:</strong> Hier kann ein eigenes UI/Art-Visual hin –
+            z.B. ein Ausschnitt aus einer Illustration oder einem Interface.
           </div>
         </div>
       </article>
 
       <!-- Right: Kurz-Lebenslauf -->
       <article class="hero-card hero-info">
-        <h1>CV · Creative Dashboard</h1>
+        <h1>Portfolio · UI/UX &amp; Illustration</h1>
         <h2>Julia Steidle</h2>
         <p class="hero-tagline">
-          UX &amp; Mediengestaltung · Digital Art · Storytelling
+          User Experience · Interface Design · Illustration
         </p>
 
         <div class="hero-meta">
           <div class="meta-item">
             <span class="meta-label">Schwerpunkt</span>
-            <span class="meta-value">UX/UI, Visual Design</span>
+            <span class="meta-value">UI/UX &amp; Webdesign</span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Standort</span>
@@ -939,160 +918,138 @@
           </div>
           <div class="meta-item">
             <span class="meta-label">Erfahrung</span>
-            <span class="meta-value">Illustration</span>
+            <span class="meta-value">Illustration &amp; Visual Design</span>
           </div>
         </div>
 
         <p class="hero-summary">
-         Ich arbeite an <strong>Design</strong> und
-          <strong>interaktiven Erlebnissen</strong>. Mein Fokus liegt darauf, Marken
-          visuell greifbar zu machen – von Merchandise &amp; Produktdesign bis hin zu
-          UI-Concepts und Auftragskunst.
+          Ich studiere <strong>User Experience</strong> und arbeite an
+          <strong>Interfaces</strong>, die klar, nutzerfreundlich und visuell
+          stimmig sind. Parallel dazu erstelle ich <strong>Illustrationen</strong>
+          und visuelle Konzepte – von ersten Skizzen bis zu ausgearbeiteten Motiven.
+          Für Werkstudententätigkeiten im Bereich UI/UX, Webdesign oder Visual Design
+          bringe ich sowohl gestalterische als auch konzeptionelle Erfahrung mit.
         </p>
 
-
-
-       
-<br>
-    <section id="tools">
-  <div class="section-header">
-    <h2>Tools &amp; Programme</h2>
-    <span class="section-pill">Skill Set</span>
-  </div>
-  <p class="section-description">
-    Eine Übersicht über die wichtigsten Programme, mit denen ich arbeite.
-    Über die Suche und Filter kannst du gezielt nach Bereichen wie Malprogramme,
-    3D oder Videoschnitt filtern.
-  </p>
-
-  <div class="tools-panel">
-    <div class="tools-top">
-      <div class="tools-search">
-        <input id="tool-search" type="text" placeholder="Suche nach Programm, z.B. »Photoshop«" />
-      </div>
-      <div class="tools-filters">
-        <button class="tool-filter active" data-filter="all">Alle</button>
-        <button class="tool-filter" data-filter="paint">Malen / Illustration</button>
-        <button class="tool-filter" data-filter="ux">UX / Prototyping</button>
- 
-      </div>
-    </div>
-
-    <ul class="tool-grid">
- 
-      <li class="tool-item" data-category="paint" data-name="adobe photoshop malen painting compositing">
-        <span class="tool-dot dot-paint"></span>
-        <div class="tool-text">
-          <div class="tool-name-row">
-            <span class="tool-name">Adobe Photoshop</span>
-            <span class="tool-level">●●●●○</span>
-          </div>
-          <span class="tool-tags">Digital Painting · Compositing · Retusche</span>
+        <div class="hero-badges">
+          <span>UX-Studium</span>
+          <span>UI-Konzepte</span>
+          <span>Illustration</span>
         </div>
-      </li>
-
-            <li class="tool-item" data-category="paint" data-name="adobe photoshop malen painting compositing">
-        <span class="tool-dot dot-paint"></span>
-        <div class="tool-text">
-          <div class="tool-name-row">
-            <span class="tool-name">Canva</span>
-            <span class="tool-level">●●●●○</span>
-          </div>
- 
-        </div>
-      </li>
-
-      <li class="tool-item" data-category="paint" data-name="procreate ipad drawing illustration">
-        <span class="tool-dot dot-paint"></span>
-        <div class="tool-text">
-          <div class="tool-name-row">
-            <span class="tool-name">Procreate</span>
-            <span class="tool-level">●●●●●</span>
-          </div>
-          <span class="tool-tags">Illustration · Brushes · Sketching</span>
-        </div>
-      </li>
-
- 
-    </ul>
-  </div>
-</section>
       </article>
     </section>
 
-    <!-- Produktdesign & Merchandise -->
-    <section id="produktdesign">
+    <!-- Tools -->
+    <section id="tools">
       <div class="section-header">
-        <h2>Produktdesign &amp; Merchandise</h2>
-        <span class="section-pill">Section 02</span>
+        <h2>Tools &amp; Programme</h2>
+        <span class="section-pill">Skill Set</span>
       </div>
       <p class="section-description">
-        Mockups, Packaging, Print-on-Demand, Brand-Merch. Klicke durch die
-        Thumbnails für eine Schnellübersicht.
+        Eine kompakte Übersicht über die wichtigsten Programme, mit denen ich im
+        Bereich UI/UX, Webdesign und Illustration arbeite.
       </p>
 
-      <div class="carousel" data-carousel="produktdesign">
-        <div class="thumb-row">
-          <button class="thumb active"
-                  data-index="0"
-                  data-full="https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Coffee Cup Line"
-                  data-caption="Minimalistisches Coffee-Cup-Merch für eine kleine Café-Brand: reduziertes Logo, starke Silhouette, klarer Farbcode."
-                  style="background-image:url('https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">ABCDF</span>
-          </button>
-
-          <button class="thumb"
-                  data-index="1"
-                  data-full="https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="T-Shirt Artwork"
-                  data-caption="T-Shirt-Design mit illustrativer Frontgrafik und dezentem Typografie-Backprint."
-                  style="background-image:url('https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">ABCDF</span>
-          </button>
-
-          <button class="thumb"
-                  data-index="2"
-                  data-full="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Packaging Concept"
-                  data-caption="Verpackungskonzept mit Fokus auf klarer Typografie, Farbcode und einfacher Haptik."
-                  style="background-image:url('https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">ABCDF</span>
-          </button>
-        </div>
-
-        <div class="carousel-main">
-          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
-          <div class="image-wrapper">
-            <img src="https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Produktdesign Beispiel" class="fade-in" />
-            <div class="caption">
-              <h3>Titel</h3>
-              <p>ABCDFddd.</p>
-            </div>
+      <div class="tools-panel">
+        <div class="tools-top">
+          <div class="tools-search">
+            <input id="tool-search" type="text" placeholder="Suche nach Programm, z.B. »Figma«" />
           </div>
-          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
+          <div class="tools-filters">
+            <button class="tool-filter active" data-filter="all">Alle</button>
+            <button class="tool-filter" data-filter="ux">UI/UX &amp; Web</button>
+            <button class="tool-filter" data-filter="paint">Illustration</button>
+          </div>
         </div>
+
+        <ul class="tool-grid">
+          <li class="tool-item" data-category="ux" data-name="figma ui ux prototyping design systems web">
+            <span class="tool-dot dot-ux"></span>
+            <div class="tool-text">
+              <div class="tool-name-row">
+                <span class="tool-name">Figma</span>
+                <span class="tool-level">●●●●○</span>
+              </div>
+              <span class="tool-tags">UI-Design · Prototyping · Design-Systeme</span>
+            </div>
+          </li>
+
+          <li class="tool-item" data-category="ux" data-name="adobe xd ui prototype">
+            <span class="tool-dot dot-ux"></span>
+            <div class="tool-text">
+              <div class="tool-name-row">
+                <span class="tool-name">Adobe XD</span>
+                <span class="tool-level">●●●○○</span>
+              </div>
+              <span class="tool-tags">Wireframes · einfache Prototypen</span>
+            </div>
+          </li>
+
+          <li class="tool-item" data-category="ux" data-name="html css webdesign basic">
+            <span class="tool-dot dot-ux"></span>
+            <div class="tool-text">
+              <div class="tool-name-row">
+                <span class="tool-name">HTML &amp; CSS</span>
+                <span class="tool-level">●●●○○</span>
+              </div>
+              <span class="tool-tags">Struktur · Layout · Grund-Implementierungen</span>
+            </div>
+          </li>
+
+          <li class="tool-item" data-category="paint" data-name="adobe photoshop malen painting compositing">
+            <span class="tool-dot dot-paint"></span>
+            <div class="tool-text">
+              <div class="tool-name-row">
+                <span class="tool-name">Adobe Photoshop</span>
+                <span class="tool-level">●●●●○</span>
+              </div>
+              <span class="tool-tags">Digital Painting · Compositing · Retusche</span>
+            </div>
+          </li>
+
+          <li class="tool-item" data-category="paint" data-name="procreate ipad drawing illustration">
+            <span class="tool-dot dot-paint"></span>
+            <div class="tool-text">
+              <div class="tool-name-row">
+                <span class="tool-name">Procreate</span>
+                <span class="tool-level">●●●●●</span>
+              </div>
+              <span class="tool-tags">Illustration · Brushes · Sketching</span>
+            </div>
+          </li>
+
+          <li class="tool-item" data-category="paint" data-name="canva layout social media">
+            <span class="tool-dot dot-paint"></span>
+            <div class="tool-text">
+              <div class="tool-name-row">
+                <span class="tool-name">Canva</span>
+                <span class="tool-level">●●●●○</span>
+              </div>
+              <span class="tool-tags">Schnelle Layouts · Social Visuals · Präsentationen</span>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- Interaktives Design -->
-    <section id="interaktiv">
+    <!-- UI/UX & Webdesign -->
+    <section id="ux">
       <div class="section-header">
-        <h2>Interaktives Design</h2>
-        <span class="section-pill">Section 03</span>
+        <h2>UI/UX &amp; Webdesign</h2>
+        <span class="section-pill">Interfaces</span>
       </div>
       <p class="section-description">
-        UI-Konzepte, Prototypen  
+        Beispiele aus UI-Konzepte, Weblayouts und Prototypen: von Dashboards über Mobile-Apps
+        bis zu Landingpage-Ideen. Ziel: klare Strukturen, gute Lesbarkeit und ein stimmiger Look.
       </p>
 
-      <div class="carousel" data-carousel="interaktiv">
+      <div class="carousel" data-carousel="ux">
         <div class="thumb-row">
           <button class="thumb active"
                   data-index="0"
                   data-full="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   data-title="Dashboard UI"
-                  data-caption="High-Fidelity-Dashboard-Konzept mit Fokus auf Klarheit, Typografie und Data-Visualisierung."
+                  data-caption="High-Fidelity-Dashboard-Konzept mit Fokus auf Klarheit, Lesbarkeit und einfache Navigation."
                   style="background-image:url('https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=600');">
             <span class="thumb-label">Dashboard UI</span>
           </button>
@@ -1101,7 +1058,7 @@
                   data-index="1"
                   data-full="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   data-title="Mobile Prototype"
-                  data-caption="Mobile-App-Prototyp in Figma / XD – Screenflows, Microinteractions und Layout-Guides."
+                  data-caption="Mobile-App-Prototyp – Screenflows, einfache Microinteractions und strukturierte Layout-Guides."
                   style="background-image:url('https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600');">
             <span class="thumb-label">Mobile UI</span>
           </button>
@@ -1110,7 +1067,7 @@
                   data-index="2"
                   data-full="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   data-title="Landing Page Concept"
-                  data-caption="Interaktive Landing Page mit klarer Typografie-Hierarchie und Scroll-Animationen."
+                  data-caption="Landing-Page-Konzept mit klarer Typografie-Hierarchie, großen Headline-Bereichen und strukturierter Call-to-Action."
                   style="background-image:url('https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600');">
             <span class="thumb-label">Landing Page</span>
           </button>
@@ -1120,10 +1077,10 @@
           <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
           <div class="image-wrapper">
             <img src="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Interaktives Design Beispiel" class="fade-in" />
+                 alt="UI/UX Beispiel" class="fade-in" />
             <div class="caption">
               <h3>Dashboard UI</h3>
-              <p>ABCDF</p>
+              <p>High-Fidelity-Dashboard-Konzept mit Fokus auf Klarheit, Lesbarkeit und einfache Navigation.</p>
             </div>
           </div>
           <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
@@ -1131,73 +1088,19 @@
       </div>
     </section>
 
-    <!-- Videoschnitt -->
-    <section id="videoschnitt">
+    <!-- Illustration -->
+    <section id="illustration">
       <div class="section-header">
-        <h2>Videoschnitt</h2>
-        <span class="section-pill">Section 04</span>
+        <h2>Illustration</h2>
+        <span class="section-pill">Visuals</span>
       </div>
       <p class="section-description">
-        Trailer, Social-Media-Clips und Mood-Videos, Storytelling im Bewegtbild.
+        Digitale Gemälde, Illustrationen und visuelle Motive, die Stil, Lichtstimmung und
+        Symbolik verbinden. Die Arbeiten lassen sich u.a. in Interfaces, Covers oder Kampagnen
+        einbinden.
       </p>
 
-      <div class="carousel" data-carousel="videoschnitt">
-        <div class="thumb-row">
-          <button class="thumb active"
-                  data-index="0"
-                  data-full="https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Music Teaser"
-                  data-caption="Kurztrailer für einen Song-Release: Schnelle Schnitte, Light-Leaks, subtile Textanimationen."
-                  style="background-image:url('https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Musikvideo</span>
-          </button>
-
-          <button class="thumb"
-                  data-index="1"
-                  data-full="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Social Reel"
-                  data-caption="Vertical Reel für Social Media mit Fokus auf Hook, B-Roll und Overlays."
-                  style="background-image:url('https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Social Reel</span>
-          </button>
-
-          <button class="thumb"
-                  data-index="2"
-                  data-full="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Highlight Cut"
-                  data-caption="Event-Highlight-Video: Storytelling über Bildauswahl, Musikdramaturgie und Colorgrading."
-                  style="background-image:url('https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Highlight Cut</span>
-          </button>
-        </div>
-
-        <div class="carousel-main">
-          <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
-          <div class="image-wrapper">
-            <img src="https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Videoschnitt Beispiel" class="fade-in" />
-            <div class="caption">
-              <h3>Music Teaser</h3>
-              <p>ABCDFd</p>
-            </div>
-          </div>
-          <button class="nav-btn next" aria-label="Nächstes Bild">&rsaquo;</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Kunst & Auftragsdesign -->
-    <section id="kunst">
-      <div class="section-header">
-        <h2>Kunst &amp; Auftragsdesign</h2>
-        <span class="section-pill">Section 05</span>
-      </div>
-      <p class="section-description">
-        Digitale Gemälde, Illustrationen, Cover-Art und individuelle Auftragsarbeiten
-  
-      </p>
-
-      <div class="carousel" data-carousel="kunst">
+      <div class="carousel" data-carousel="illustration">
         <div class="thumb-row">
           <button class="thumb active"
                   data-index="0"
@@ -1212,7 +1115,7 @@
                   data-index="1"
                   data-full="https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   data-title="Editorial Illustration"
-                  data-caption="Illustration mit grafischen Formen und mutiger Farbpalette für Editorial oder Social."
+                  data-caption="Illustration mit grafischen Formen und mutiger Farbpalette – geeignet für Editorial oder Social Media."
                   style="background-image:url('https://images.pexels.com/photos/4475922/pexels-photo-4475922.jpeg?auto=compress&cs=tinysrgb&w=600');">
             <span class="thumb-label">Illustration</span>
           </button>
@@ -1220,10 +1123,10 @@
           <button class="thumb"
                   data-index="2"
                   data-full="https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  data-title="Album Cover Concept"
+                  data-title="Cover Concept"
                   data-caption="Cover-Art-Konzept mit symbolischer Bildsprache, Texture Overlays und typografischem Fokus."
                   style="background-image:url('https://images.pexels.com/photos/2064349/pexels-photo-2064349.jpeg?auto=compress&cs=tinysrgb&w=600');">
-            <span class="thumb-label">Art</span>
+            <span class="thumb-label">Cover Art</span>
           </button>
         </div>
 
@@ -1231,7 +1134,7 @@
           <button class="nav-btn prev" aria-label="Vorheriges Bild">&lsaquo;</button>
           <div class="image-wrapper">
             <img src="https://images.pexels.com/photos/374018/pexels-photo-374018.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Kunst Beispiel" class="fade-in" />
+                 alt="Illustrationsbeispiel" class="fade-in" />
             <div class="caption">
               <h3>Digital Portrait</h3>
               <p>Detailreiches digitales Portrait mit Fokus auf Licht, Textur und Stimmung.</p>
@@ -1246,27 +1149,26 @@
     <section id="kontakt">
       <div class="section-header">
         <h2>Kontakt</h2>
-        <span class="section-pill">Section 06</span>
+        <span class="section-pill">Let's talk</span>
       </div>
       <p class="section-description">
-        Du möchtest mit mir an einem Projekt arbeiten, ein Artwork anfragen oder
-        Feedback dalassen? Schreib mir direkt über das Formular oder per Mail.
+        Für Werkstudentenstellen, Projekte in UI/UX, Webdesign oder Illustration – oder einfach,
+        um einen Einblick in meine Arbeitsweise zu bekommen – kannst du mich gern direkt kontaktieren.
       </p>
 
       <div class="contact-card">
         <div class="contact-text">
           <p>
-      Ob Branding, Merch, Interface oder Kunst – ich liebe
-            Projekte, bei denen sich eine Geschichte über Bild und Ton erzählt.
+            Ich arbeite gern strukturiert, aber mit Raum für Experimente: von ersten Skizzen und
+            Wireframes bis hin zu detaillierten Visuals.
           </p>
           <p>
-            Für Aufträge, Kollaborationen oder Fragen:
+            Für Anfragen oder Fragen:
           </p>
           <div class="contact-links">
             <a href="mailto:joulie.info@gmail.com">joulie.info@gmail.com</a>
             <a href="#">LinkedIn</a>
-            <a href="#">Instagram</a>
-            <a href="#">Artstation / Behance</a>
+            <a href="#">Portfolio-Profile (Behance / Artstation)</a>
           </div>
         </div>
 
@@ -1281,7 +1183,7 @@
           </div>
           <div>
             <label for="message">Nachricht</label>
-            <textarea id="message" rows="4" placeholder="Worum geht es? Projekt, Idee oder einfach Hallo sagen."></textarea>
+            <textarea id="message" rows="4" placeholder="Worum geht es? Projekt, Stelle oder einfach Hallo sagen."></textarea>
           </div>
           <button type="submit">Nachricht senden</button>
         </form>
@@ -1313,9 +1215,8 @@
         const title = activeThumb.getAttribute("data-title") || "";
         const text = activeThumb.getAttribute("data-caption") || "";
 
-        // Fade neu triggern
         img.classList.remove("fade-in");
-        void img.offsetWidth;  
+        void img.offsetWidth;
         img.src = full;
         img.alt = title;
         img.classList.add("fade-in");
@@ -1341,7 +1242,7 @@
       });
     });
 
-    // Smooth Scroll für Schnellnavigation  
+    // Smooth Scroll für Schnellnavigation
     document.querySelectorAll('.quick-nav a[href^="#"]').forEach((link) => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
@@ -1355,49 +1256,47 @@
       });
     });
 
-    // tools
     // Tools: Suche + Filter
-(function () {
-  const searchInput = document.getElementById("tool-search");
-  const filterButtons = Array.from(document.querySelectorAll(".tool-filter"));
-  const items = Array.from(document.querySelectorAll(".tool-item"));
+    (function () {
+      const searchInput = document.getElementById("tool-search");
+      const filterButtons = Array.from(document.querySelectorAll(".tool-filter"));
+      const items = Array.from(document.querySelectorAll(".tool-item"));
 
-  let activeFilter = "all";
+      let activeFilter = "all";
 
-  function applyToolsFilter() {
-    const query = (searchInput?.value || "").toLowerCase().trim();
+      function applyToolsFilter() {
+        const query = (searchInput?.value || "").toLowerCase().trim();
 
-    items.forEach((item) => {
-      const cat = item.getAttribute("data-category");
-      const name = (item.getAttribute("data-name") || "").toLowerCase();
+        items.forEach((item) => {
+          const cat = item.getAttribute("data-category");
+          const name = (item.getAttribute("data-name") || "").toLowerCase();
 
-      const matchesFilter = activeFilter === "all" || cat === activeFilter;
-      const matchesSearch = !query || name.includes(query);
+          const matchesFilter = activeFilter === "all" || cat === activeFilter;
+          const matchesSearch = !query || name.includes(query);
 
-      if (matchesFilter && matchesSearch) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
+          if (matchesFilter && matchesSearch) {
+            item.style.display = "";
+          } else {
+            item.style.display = "none";
+          }
+        });
       }
-    });
-  }
 
-  if (searchInput) {
-    searchInput.addEventListener("input", applyToolsFilter);
-  }
+      if (searchInput) {
+        searchInput.addEventListener("input", applyToolsFilter);
+      }
 
-  filterButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      activeFilter = btn.getAttribute("data-filter") || "all";
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeFilter = btn.getAttribute("data-filter") || "all";
+          applyToolsFilter();
+        });
+      });
+
       applyToolsFilter();
-    });
-  });
-
-  applyToolsFilter();
-})();
-
+    })();
   </script>
 </body>
 </html>
